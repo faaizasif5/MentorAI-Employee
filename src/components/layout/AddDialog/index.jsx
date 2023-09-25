@@ -15,6 +15,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { tokens } from "../../../theme";
 import { useDarkMode } from "../../../context/DarkModeContext";
+import { DarkModeFontColour } from "../muiStyles";
 
 function AddDialog({
   addOpen,
@@ -43,7 +44,7 @@ function AddDialog({
           fontSize: "20px",
           fontWeight: "bold",
           fontFamily: "Gilroy-Bold",
-          color: isDarkMode ? "white" : "black",
+          ...DarkModeFontColour(isDarkMode),
         }}
       >
         {t("employee.assignEmployee")}
@@ -53,7 +54,7 @@ function AddDialog({
           <FormControl sx={{ width: 550 }}>
             <InputLabel
               id="demo-multiple-name-label"
-              style={{ color: isDarkMode ? "white" : "black" }}
+              style={DarkModeFontColour(isDarkMode)}
             >
               {t("employee.pickEmployee")}
             </InputLabel>
@@ -63,15 +64,15 @@ function AddDialog({
               value={selectedEmployeeId}
               onChange={handleChange}
               input={<OutlinedInput label={t("linemanager.assign")} />}
-              style={{ color: isDarkMode ? "white" : "black" }}
+              style={DarkModeFontColour(isDarkMode)}
             >
               {employeesWithoutLineManagers.map((employee) => (
                 <MenuItem
                   key={employee.employee_id}
                   value={employee.employee_id}
                   style={{
-                    color: isDarkMode ? "white" : "black",
                     backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
+                    ...DarkModeFontColour(isDarkMode),
                   }}
                 >
                   {employee.first_name} {employee.last_name} (

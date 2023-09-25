@@ -14,6 +14,7 @@ import {
   DeleteModalCancelButtonStyle,
   DeleteModalConfirmButtonStyle,
   DeleteModalContentStyle,
+  DarkModeFontColour,
 } from "../muiStyles";
 
 function deleteDialog({
@@ -45,19 +46,13 @@ function deleteDialog({
           fontSize: "20px",
           fontWeight: "bold",
           fontFamily: "Lato",
-          color: isDarkMode ? "white" : "black",
+          ...DarkModeFontColour(isDarkMode),
         }}
       >
         {title}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText
-          // style={{
-          //   fontFamily: "unset",
-          //   color: isDarkMode ? "white" : "#e94343",
-          // }}
-          sx={DeleteModalContentStyle(isDarkMode)}
-        >
+        <DialogContentText sx={DeleteModalContentStyle(isDarkMode)}>
           <h5>{t("delete.DialogContentText")}</h5>
         </DialogContentText>
       </DialogContent>

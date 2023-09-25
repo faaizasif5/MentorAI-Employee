@@ -16,6 +16,11 @@ export const DashboardTitleTextStyle = (isDarkMode) => {
     lineHeight: "normal",
   };
 };
+export const DarkModeFontColour = (isDarkMode) => {
+  return {
+    color: isDarkMode ? "white" : "black",
+  };
+};
 export const LoadStressTitleBox = {
   display: "flex",
   marginLeft: "20px",

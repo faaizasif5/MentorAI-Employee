@@ -28,7 +28,7 @@ import {
   formatLastDateText,
 } from "../../helpers/formatDate";
 import dropdownStyles from "../layout/dropdownStyle/style";
-import { FormTextBoxStyle } from "../layout/muiStyles";
+import { FormTextBoxStyle, DarkModeFontColour } from "../layout/muiStyles";
 
 function AddProject() {
   const today = dayjs();
@@ -152,7 +152,7 @@ function AddProject() {
               <FormControl sx={{ gridColumn: "span 2" }}>
                 <InputLabel
                   id="demo-multiple-name-label"
-                  style={{ color: isDarkMode ? "white" : "black" }}
+                  style={DarkModeFontColour(isDarkMode)}
                 >
                   {t("project.pickResources")}
                 </InputLabel>

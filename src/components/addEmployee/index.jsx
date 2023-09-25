@@ -20,7 +20,7 @@ import FormSubmitHandler from "../common/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
 import dropdownStyles from "../layout/dropdownStyle/style";
 import { useDarkMode } from "../../context/DarkModeContext";
-import { FormTextBoxStyle } from "../layout/muiStyles";
+import { FormTextBoxStyle, DarkModeFontColour } from "../layout/muiStyles";
 
 function Form() {
   const theme = useTheme();
@@ -140,7 +140,7 @@ function Form() {
               >
                 <InputLabel
                   id="demo-multiple-name-label"
-                  style={{ color: isDarkMode ? "white" : "black" }}
+                  style={DarkModeFontColour(isDarkMode)}
                 >
                   Designation
                 </InputLabel>
@@ -152,7 +152,7 @@ function Form() {
                   onChange={handleDropdownChange}
                   input={<OutlinedInput label={t("auth.designation")} />}
                   MenuProps={MenuProps}
-                  sx={{ color: isDarkMode ? "white" : "black" }}
+                  sx={DarkModeFontColour(isDarkMode)}
                 >
                   {designations.map((designation) => (
                     <MenuItem
@@ -209,7 +209,7 @@ function Form() {
               <FormControl sx={{ gridColumn: "span 2" }}>
                 <InputLabel
                   id="demo-multiple-name-label"
-                  style={{ color: isDarkMode ? "white" : "black" }}
+                  style={DarkModeFontColour(isDarkMode)}
                 >
                   {t("linemanager.isLineManager")}
                 </InputLabel>
@@ -223,13 +223,13 @@ function Form() {
                     <OutlinedInput label={t("linemanager.isLineManager")} />
                   }
                   MenuProps={MenuProps}
-                  style={{ color: isDarkMode ? "white" : "black" }}
+                  style={DarkModeFontColour(isDarkMode)}
                 >
                   <MenuItem
                     value="yes"
                     style={{
-                      color: isDarkMode ? "white" : "black",
                       backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
+                      ...DarkModeFontColour(isDarkMode),
                     }}
                   >
                     Yes
@@ -237,8 +237,8 @@ function Form() {
                   <MenuItem
                     value="no"
                     style={{
-                      color: isDarkMode ? "white" : "black",
                       backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
+                      ...DarkModeFontColour(isDarkMode),
                     }}
                   >
                     No
