@@ -1,9 +1,11 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { LoadTypeTextStyle } from "../../layout/muiStyles";
+import { useDarkMode } from "../../../context/DarkModeContext";
 
 function LoadType(props) {
   const { text } = props;
-  return <Typography sx={LoadTypeTextStyle}>{text}</Typography>;
+  const { isDarkMode } = useDarkMode();
+  return <Typography sx={LoadTypeTextStyle(isDarkMode)}>{text}</Typography>;
 }
 export default LoadType;

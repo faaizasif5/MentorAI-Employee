@@ -6,6 +6,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import { logout } from "../../login/firebase";
+import { useDarkMode } from "../../../context/DarkModeContext";
 import "./sidebar.css";
 import Routes from "../../../config/routes";
 
@@ -13,6 +14,7 @@ function Sidebar({ children }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const { isDarkMode } = useDarkMode();
 
   const showAnimation = {
     hidden: {
@@ -46,7 +48,7 @@ function Sidebar({ children }) {
             damping: 10,
           },
         }}
-        className={`sidebar `}
+        className={`sidebar ${isDarkMode ? "dark-mode" : ""}`}
       >
         <div className="top_section">
           <AnimatePresence>
@@ -84,8 +86,8 @@ function Sidebar({ children }) {
                 to={route.path}
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                className="link"
-                activeclassname="active"
+                className={`link ${isDarkMode ? "dark-mode" : ""}`}
+                activeclassname={`active ${isDarkMode ? "dark-mode" : ""}`}
                 onClick={() => handleClick(route.name)}
               >
                 <div className="icon">

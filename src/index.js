@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
+import { DarkModeProvider } from "./context/DarkModeContext";
 import "./i18n";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -15,7 +16,9 @@ root.render(
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <DarkModeProvider>
+            <App />
+          </DarkModeProvider>
         </BrowserRouter>
       </Provider>
     </React.StrictMode>

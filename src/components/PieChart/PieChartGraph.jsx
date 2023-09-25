@@ -1,8 +1,10 @@
 import React from "react";
 import { PieChart } from "@mui/x-charts";
 import { PieChartStyle } from "../layout/muiStyles";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 function PieChartGraph({ chartData }) {
+  const { isDarkMode } = useDarkMode();
   return (
     <PieChart
       series={[
@@ -22,7 +24,7 @@ function PieChartGraph({ chartData }) {
           horizontal: "middle",
         },
       }}
-      sx={PieChartStyle}
+      sx={PieChartStyle(isDarkMode)}
     />
   );
 }

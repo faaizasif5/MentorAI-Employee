@@ -13,12 +13,16 @@ import {
   RedAlertDivider,
   RedAlertFrequency,
 } from "../layout/muiStyles";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 function RedAlertEmployees() {
+  const { isDarkMode } = useDarkMode();
   return (
     <Box>
-      <Box sx={RedAlertBoxStyle}>
-        <Typography sx={RedAlertTitleStyle}>Employees on Red Alert</Typography>
+      <Box sx={RedAlertBoxStyle(isDarkMode)}>
+        <Typography sx={RedAlertTitleStyle(isDarkMode)}>
+          Employees on Red Alert
+        </Typography>
       </Box>
       <Box
         gridColumn="span 1"
@@ -27,7 +31,7 @@ function RedAlertEmployees() {
         maxHeight="282px"
         marginTop="16px"
         sx={{
-          ...RedAlertContentBoxStyle,
+          ...RedAlertContentBoxStyle(isDarkMode),
           overflowY: "auto",
         }}
       >
@@ -35,7 +39,9 @@ function RedAlertEmployees() {
           <div key={employee.id}>
             <Box sx={{ display: "flex", mt: 2, ml: 4, alignItems: "center" }}>
               <Avatar alt={employee.name} src={employee.avatar} />
-              <Typography sx={RedAlertEmpName}>{employee.name}</Typography>
+              <Typography sx={RedAlertEmpName(isDarkMode)}>
+                {employee.name}
+              </Typography>
               <Typography sx={{ ...RedAlertFrequency, marginLeft: "110px" }}>
                 {employee.frequency}
               </Typography>

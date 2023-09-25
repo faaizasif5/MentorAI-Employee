@@ -1,35 +1,16 @@
-import {
-  Box,
-  Modal,
-  Fade,
-  Grid,
-  List,
-  ListItem,
-  Avatar,
-  ListItemAvatar,
-  ListItemText,
-  Divider,
-  IconButton,
-  Backdrop,
-} from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Box, Modal, Fade, Grid, List, Backdrop } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
 import ScheduleIcon from "@mui/icons-material/Schedule";
-import Diversity3Icon from "@mui/icons-material/Diversity3";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import DescriptionIcon from "@mui/icons-material/Description";
 import NumbersIcon from "@mui/icons-material/Numbers";
-import EditIcon from "@mui/icons-material/Edit";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import style from "../modalStyle/modalStyle";
+import { previewModalStyle } from "../muiStyles";
+import { useDarkMode } from "../../../context/DarkModeContext";
+import ModalListItem from "../modalListItem";
 
 function ProjectModal({ open, handleClose, rowsData, getResourceNames }) {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-  function handleEditClick() {
-    navigate("/addProject");
-  }
+  const { isDarkMode } = useDarkMode();
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -43,127 +24,47 @@ function ProjectModal({ open, handleClose, rowsData, getResourceNames }) {
       }}
     >
       <Fade in={open}>
-        <Box sx={style}>
+        <Box sx={previewModalStyle(isDarkMode)}>
           <Grid container>
             <Grid item xs={11}>
               <List sx={{ width: "100%" }}>
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <NumbersIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    sx={{ marginTop: "10px" }}
-                    primary={t("project.id")}
-                    secondary={rowsData.id}
-                  />
-                  <IconButton
-                    size="small"
-                    onClick={handleEditClick}
-                    sx={{
-                      display: "flex",
-                      fontSize: "12px",
-                      flexDirection: "column",
-                      maxWidth: "50px",
-                      alignItems: "center",
-                      "& .MuiSvgIcon-root": {
-                        marginBottom: "4px",
-                      },
-                    }}
-                  >
-                    Edit
-                    <EditIcon />
-                  </IconButton>
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <WorkIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("project.name")}
-                    secondary={rowsData.name}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <CalendarMonthIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("project.startDate")}
-                    secondary={rowsData.start_date}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <CalendarMonthIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("project.lastDate")}
-                    secondary={rowsData.end_date}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <ScheduleIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("project.duration")}
-                    secondary={rowsData.duration}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <DescriptionIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("project.description")}
-                    secondary={rowsData.description}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <Diversity3Icon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("project.NumberofResourses")}
-                    secondary={rowsData.no_of_resources}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <ListAltIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("project.ResourseList")}
-                    secondary={getResourceNames(rowsData.resource_list)}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
+                <ModalListItem
+                  label="project.id"
+                  value={rowsData.id}
+                  AvatarIcon={NumbersIcon}
+                />
+                <ModalListItem
+                  label="project.name"
+                  value={rowsData.name}
+                  AvatarIcon={WorkIcon}
+                />
+                <ModalListItem
+                  label="project.startDate"
+                  value={rowsData.start_date}
+                  AvatarIcon={CalendarMonthIcon}
+                />
+                <ModalListItem
+                  label="project.lastDate"
+                  value={rowsData.end_date}
+                  AvatarIcon={CalendarMonthIcon}
+                />
+                <ModalListItem
+                  label="project.duration"
+                  value={rowsData.duration}
+                  AvatarIcon={ScheduleIcon}
+                />
+                <ModalListItem
+                  label="project.description"
+                  value={rowsData.description}
+                  AvatarIcon={DescriptionIcon}
+                />
+                <ModalListItem
+                  label="project.ResourseList"
+                  value={getResourceNames(rowsData.resource_list)}
+                  AvatarIcon={ListAltIcon}
+                />
               </List>
             </Grid>
-            <Divider sx={{ margin: "16px 0", backgroundColor: "black" }} />
           </Grid>
         </Box>
       </Fade>

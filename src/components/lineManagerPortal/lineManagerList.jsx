@@ -13,6 +13,7 @@ import { setLineManagerToEmployee } from "../../redux/reducers/employeeSlice";
 import LinemanagerTableColumns from "../../constants/LineManagertableColumns";
 import deleteAccount from "../common/deleteHandler/deleteHandler";
 import handleAssignClick from "../common/assignHandler/assignHandler";
+import { useDarkMode } from "../../context/DarkModeContext";
 import {
   setLineManagerData,
   setEmployeeToLineManager,
@@ -27,6 +28,7 @@ function lineManagerList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isDarkMode } = useDarkMode();
   const tableData = useSelector((state) => state.lineManager.lineManagerData);
   const employeeData = useSelector((state) => state.employee.employeeData);
   const [addOpen, setaddOpen] = useState(false);
@@ -73,7 +75,7 @@ function lineManagerList() {
         subtitle={t("linemanager.subtitle")}
         sx={{ marginTop: 4 }}
       />
-      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles}>
+      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles(isDarkMode)}>
         <DataGrid
           rows={tableData}
           columns={LinemanagerTableColumns({

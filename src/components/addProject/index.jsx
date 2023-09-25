@@ -22,17 +22,20 @@ import { MenuProps } from "../layout/dropdownLayout/dropdownLayout";
 import calculateDuration from "../../helpers/calculateDuration";
 import { handleProjectFormSubmit } from "../common/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
+import { useDarkMode } from "../../context/DarkModeContext";
 import {
   formatStartDateText,
   formatLastDateText,
 } from "../../helpers/formatDate";
 import dropdownStyles from "../layout/dropdownStyle/style";
+import { FormTextBoxStyle } from "../layout/muiStyles";
 
 function AddProject() {
   const today = dayjs();
   const theme = useTheme();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { isDarkMode } = useDarkMode();
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const [submit, setSubmit] = useState(false);
   const [designationName, setDesignationName] = useState([]);
@@ -82,7 +85,16 @@ function AddProject() {
           handleChange,
           handleSubmit,
         }) => (
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              background: isDarkMode ? "rgb(48 47 53)" : "#fcfcfc",
+              padding: "18px",
+              // paddingTop: "40px",
+              borderRadius: "10px",
+              marginTop: "45px",
+            }}
+          >
             <Box
               display="inline-grid"
               gap="30px"
@@ -102,7 +114,7 @@ function AddProject() {
                 name="name"
                 error={!!touched.name && !!errors.name}
                 helperText={touched.name && errors.name}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <MobileDatePicker
@@ -112,7 +124,7 @@ function AddProject() {
                   inputFormat={formatStartDateText}
                   onBlur={handleBlur}
                   minDate={today}
-                  sx={{ gridColumn: "span 1" }}
+                  sx={{ gridColumn: "span 1", ...FormTextBoxStyle(isDarkMode) }}
                 />
               </LocalizationProvider>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -122,7 +134,7 @@ function AddProject() {
                   onChange={handleLastDateChange}
                   inputFormat={formatLastDateText}
                   minDate={today}
-                  sx={{ gridColumn: "span 1" }}
+                  sx={{ gridColumn: "span 1", ...FormTextBoxStyle(isDarkMode) }}
                 />
               </LocalizationProvider>
               <TextField
@@ -135,10 +147,13 @@ function AddProject() {
                 name="description"
                 error={!!touched.description && !!errors.description}
                 helperText={touched.description && errors.description}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <FormControl sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-multiple-name-label">
+                <InputLabel
+                  id="demo-multiple-name-label"
+                  style={{ color: isDarkMode ? "white" : "black" }}
+                >
                   {t("project.pickResources")}
                 </InputLabel>
                 <Select
@@ -150,7 +165,7 @@ function AddProject() {
                   variant="filled"
                   input={<OutlinedInput label="Employees" />}
                   MenuProps={MenuProps}
-                  sx={{ width: 500 }}
+                  sx={{ width: 500, color: isDarkMode ? "white" : "black" }}
                 >
                   {dummyData.map((employee) => (
                     <MenuItem
@@ -160,6 +175,7 @@ function AddProject() {
                         employee.employee_id,
                         designationName,
                         theme,
+                        isDarkMode,
                       )}
                     >
                       {`${employee.first_name} ${employee.last_name} (${employee.designation})`}

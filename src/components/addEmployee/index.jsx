@@ -19,11 +19,14 @@ import { MenuProps } from "../layout/dropdownLayout/dropdownLayout";
 import FormSubmitHandler from "../common/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
 import dropdownStyles from "../layout/dropdownStyle/style";
+import { useDarkMode } from "../../context/DarkModeContext";
+import { FormTextBoxStyle } from "../layout/muiStyles";
 
 function Form() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { isDarkMode } = useDarkMode();
   const [submit, setSubmit] = useState(false);
   const [isLineManager, setIsLineManager] = useState(null);
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -73,13 +76,25 @@ function Form() {
           handleChange,
           handleSubmit,
         }) => (
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              background: isDarkMode ? "rgb(48 47 53)" : "#fcfcfc",
+              padding: "18px",
+              paddingTop: "40px",
+              borderRadius: "10px",
+              marginTop: "13px",
+            }}
+          >
             <Box
               display="grid"
               gap="30px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+                "& > div": {
+                  gridColumn: isNonMobile ? undefined : "span 4",
+                  background: "rgb(169 165 187 / 13%)",
+                },
               }}
             >
               <TextField
@@ -92,7 +107,7 @@ function Form() {
                 name="firstname"
                 error={!!touched.firstname && !!errors.firstname}
                 helperText={touched.firstname && errors.firstname}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <TextField
                 fullWidth
@@ -104,7 +119,7 @@ function Form() {
                 name="lastname"
                 error={!!touched.lastname && !!errors.lastname}
                 helperText={touched.lastname && errors.lastname}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <TextField
                 fullWidth
@@ -116,10 +131,17 @@ function Form() {
                 name="email"
                 error={!!touched.email && !!errors.email}
                 helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
-              <FormControl sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-multiple-name-label">
+              <FormControl
+                sx={{
+                  gridColumn: "span 2",
+                }}
+              >
+                <InputLabel
+                  id="demo-multiple-name-label"
+                  style={{ color: isDarkMode ? "white" : "black" }}
+                >
                   Designation
                 </InputLabel>
                 <Select
@@ -130,6 +152,7 @@ function Form() {
                   onChange={handleDropdownChange}
                   input={<OutlinedInput label={t("auth.designation")} />}
                   MenuProps={MenuProps}
+                  sx={{ color: isDarkMode ? "white" : "black" }}
                 >
                   {designations.map((designation) => (
                     <MenuItem
@@ -139,6 +162,7 @@ function Form() {
                         designation,
                         designationName,
                         theme,
+                        isDarkMode,
                       )}
                     >
                       {designation}
@@ -156,7 +180,7 @@ function Form() {
                 name="password"
                 error={!!touched.password && !!errors.password}
                 helperText={touched.password && errors.password}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <TextField
                 fullWidth
@@ -168,7 +192,7 @@ function Form() {
                 name="address"
                 error={!!touched.address && !!errors.address}
                 helperText={touched.address && errors.address}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <TextField
                 fullWidth
@@ -180,10 +204,13 @@ function Form() {
                 name="contact_no"
                 error={!!touched.contact_no && !!errors.contact_no}
                 helperText={touched.contact_no && errors.contact_no}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <FormControl sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-multiple-name-label">
+                <InputLabel
+                  id="demo-multiple-name-label"
+                  style={{ color: isDarkMode ? "white" : "black" }}
+                >
                   {t("linemanager.isLineManager")}
                 </InputLabel>
                 <Select
@@ -196,9 +223,26 @@ function Form() {
                     <OutlinedInput label={t("linemanager.isLineManager")} />
                   }
                   MenuProps={MenuProps}
+                  style={{ color: isDarkMode ? "white" : "black" }}
                 >
-                  <MenuItem value="yes">Yes</MenuItem>
-                  <MenuItem value="no">No</MenuItem>
+                  <MenuItem
+                    value="yes"
+                    style={{
+                      color: isDarkMode ? "white" : "black",
+                      backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
+                    }}
+                  >
+                    Yes
+                  </MenuItem>
+                  <MenuItem
+                    value="no"
+                    style={{
+                      color: isDarkMode ? "white" : "black",
+                      backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
+                    }}
+                  >
+                    No
+                  </MenuItem>
                 </Select>
               </FormControl>
               <TextField
@@ -212,11 +256,11 @@ function Form() {
                 name="cnic"
                 error={!!touched.cnic && !!errors.cnic}
                 helperText={touched.cnic && errors.cnic}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
               />
               <TextField
                 type="file"
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
                 accept="image/*"
                 variant="outlined"
                 InputProps={{
@@ -237,8 +281,22 @@ function Form() {
                 }}
               />
             </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" color="success" variant="contained">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20px",
+              }}
+            >
+              <Button
+                type="submit"
+                variant="contained"
+                style={{
+                  backgroundColor: "rgb(18 121 69)",
+                  width: "15vw",
+                  height: "7vh",
+                }}
+              >
                 {t("addAccount.createEmployee")}
               </Button>
             </Box>

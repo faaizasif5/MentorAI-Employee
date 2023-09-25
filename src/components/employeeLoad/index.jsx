@@ -1,24 +1,17 @@
 import { Box, useTheme, Divider } from "@mui/material";
-import ProgressLine from "../LinearProgressGraphs/progressline";
-import EmojiBox from "../LinearProgressGraphs/emojiBox";
-import Percentage from "../LinearProgressGraphs/percentagecomponent";
 import HappyGreen from "../../assets/Emojis/happyGreen.png";
-import LoadType from "../LinearProgressGraphs/loadType";
 import HappyYellow from "../../assets/Emojis/happyYellow.png";
 import HappyBlue from "../../assets/Emojis/happyBlue.png";
 import HappyRed from "../../assets/Emojis/happyRed.png";
 import { tokens } from "../../theme";
-import {
-  EmployeeBoxStyle,
-  LoadBox,
-  ProgressBox,
-  ProgressText,
-  PieChartTypographyStyle,
-} from "../layout/muiStyles";
+import { EmployeeBoxStyle, PieChartTypographyStyle } from "../layout/muiStyles";
+import { useDarkMode } from "../../context/DarkModeContext";
+import EmployeeLoadBox from "../layout/employeeLoadBox/employeeLoadBox";
 
 function EmployeeLoad() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const { isDarkMode } = useDarkMode();
   return (
     <Box
       gridColumn="span 1"
@@ -26,83 +19,43 @@ function EmployeeLoad() {
       width="90vh"
       height="378px"
       backgroundColor={colors.primary[400]}
-      sx={EmployeeBoxStyle}
+      sx={EmployeeBoxStyle(isDarkMode)}
     >
-      <Box sx={{ display: "flex" }}>
-        <Box
-          sx={{
-            ...LoadBox,
-            background: "rgba(84, 209, 77, 0.10)",
-            border: "1px solid #54D14D",
-          }}
-        >
-          <EmojiBox emoji={HappyGreen} />
-        </Box>
-        <Box sx={ProgressBox}>
-          <ProgressLine value={73} color="#54D14D" />
-          <Box sx={ProgressText}>
-            <LoadType text="Normal" />
-            <Percentage perc="%73" />
-          </Box>
-        </Box>
-      </Box>
+      <EmployeeLoadBox
+        emoji={HappyGreen}
+        value={73}
+        color={isDarkMode ? "#32852d" : "#54D14D"}
+        text="Normal"
+        background={isDarkMode ? "#253c24f2" : "rgba(84, 209, 77, 0.10)"}
+        border="1px solid #54D14D"
+      />
       <Divider sx={PieChartTypographyStyle} />
-      <Box sx={{ display: "flex" }}>
-        <Box
-          sx={{
-            ...LoadBox,
-            background: "rgba(75, 126, 239, 0.10)",
-            border: "1px solid #4B7EEF",
-          }}
-        >
-          <EmojiBox emoji={HappyBlue} />
-        </Box>
-        <Box sx={ProgressBox}>
-          <ProgressLine value={34} color="#35C2FD" />
-          <Box sx={ProgressText}>
-            <LoadType text="Normal" />
-            <Percentage perc="%34" />
-          </Box>
-        </Box>
-      </Box>
+      <EmployeeLoadBox
+        emoji={HappyBlue}
+        value={34}
+        color={isDarkMode ? "#1e7295" : "#35C2FD"}
+        text="Normal"
+        background={isDarkMode ? "#24243cf2" : "rgba(75, 126, 239, 0.10)"}
+        border="1px solid #4B7EEF"
+      />
       <Divider sx={PieChartTypographyStyle} />
-      <Box sx={{ display: "flex" }}>
-        <Box
-          sx={{
-            ...LoadBox,
-            background: "rgba(245, 195, 0, 0.10)",
-            border: "1px solid #F5C300",
-          }}
-        >
-          <EmojiBox emoji={HappyYellow} />
-        </Box>
-        <Box sx={ProgressBox}>
-          <ProgressLine value={51} color="#EF7E5D" />
-          <Box sx={ProgressText}>
-            <LoadType text="Medium" />
-            <Percentage perc="%51" />
-          </Box>
-        </Box>
-      </Box>
+      <EmployeeLoadBox
+        emoji={HappyYellow}
+        value={51}
+        color="#EF7E5D"
+        text="Medium"
+        background={isDarkMode ? "#38362b" : "rgba(245, 195, 0, 0.10)"}
+        border="1px solid #F5C300"
+      />
       <Divider sx={PieChartTypographyStyle} />
-      <Box sx={{ display: "flex" }}>
-        <Box
-          sx={{
-            ...LoadBox,
-            background: "rgba(252, 69, 69, 0.20)",
-            border: "1px solid #FC4545",
-          }}
-        >
-          <EmojiBox emoji={HappyRed} />
-        </Box>
-        <Box sx={ProgressBox}>
-          <ProgressLine value={51} color="#dd0000" />
-          <Box sx={ProgressText}>
-            <LoadType text="High" />
-            <Percentage perc="%51" />
-          </Box>
-        </Box>
-      </Box>
+      <EmployeeLoadBox
+        emoji={HappyRed}
+        value={51}
+        color="#dd0000"
+        text="High"
+        background={isDarkMode ? "#403030f2" : "rgb(255 141 141 / 20%)"}
+        border="1px solid #FC4545"
+      />
       <Divider sx={PieChartTypographyStyle} />
     </Box>
   );

@@ -21,6 +21,6 @@ const handleAssignClick =
         employeeId: selectedEmployeeId,
       }),
     );
-    navigate("/employee");
+    navigate("../employee");
   };
 export default handleAssignClick;

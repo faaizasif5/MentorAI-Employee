@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./components/login/firebase";
 import MainDashboard from "./components/mainDashboard";
 import Login from "./components/login";
+import { useDarkMode } from "./context/DarkModeContext";
 import "./App.css";
 
 const Profile = lazy(() => import("./components/profile"));
@@ -12,9 +13,9 @@ const Dashboard = lazy(() => import("./components/dashboard"));
 
 function App() {
   const [user] = useAuthState(auth);
-
+  const { isDarkMode } = useDarkMode();
   return (
-    <div className="App">
+    <div className={`App ${isDarkMode ? "dark-mode" : ""}`}>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route

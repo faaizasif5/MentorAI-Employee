@@ -12,12 +12,14 @@ import dataGridStyles from "../layout/datagridStyle/datagridStyle";
 import { setTableReduxData } from "../../redux/reducers/employeeSlice";
 import EmployeeTableColumns from "../../constants/EmployeeTableColumn";
 import deleteAccount from "../common/deleteHandler/deleteHandler";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 function EmployeeList() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isDarkMode } = useDarkMode();
   const tableData = useSelector((state) => state.employee.employeeData);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const [previewopen, setpreviewOpen] = useState(false);
@@ -49,7 +51,7 @@ function EmployeeList() {
   return (
     <Box display="flex" flexDirection="column" height="100vh">
       <Header title={t("employee.title")} subtitle={t("employee.subtitle")} />
-      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles}>
+      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles(isDarkMode)}>
         <AddAccountButton
           handleAddClick={handleAddClick}
           title={t("employee.button")}

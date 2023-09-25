@@ -33,12 +33,16 @@ function Login() {
       // Trigger a loading screen
       return;
     }
-    if (user && iscaptcha) {
+    if (user) {
       dispatch(clearErrors());
       navigate("/dashboard/home");
     }
   }, [user, loading, iscaptcha]);
   function handleCaptcha() {
+    setIsCaptcha(true);
+  }
+  function handleGoogleSignIn() {
+    signInWithGoogle();
     setIsCaptcha(true);
   }
   const handleChange = (e) => {
@@ -113,7 +117,7 @@ function Login() {
             <button
               type="submit"
               className="fluild ui button red"
-              onClick={signInWithGoogle}
+              onClick={handleGoogleSignIn}
             >
               {t("auth.googleSignup")}
             </button>

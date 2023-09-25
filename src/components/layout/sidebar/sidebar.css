@@ -23,7 +23,13 @@ main {
   background: rgb(0, 7, 61);
   color: rgb(255, 255, 255);
   /* overflow-y: auto; */
+  min-height: 110vh;
 }
+.sidebar.dark-mode {
+  background-color: rgb(48 47 53); /* Set your dark mode background color */
+  
+}
+
 .icon{
   padding-left: 15px;
   height: 30px;
@@ -69,9 +75,15 @@ main {
   background: rgb(45, 51, 89);
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
+.link:hover.dark-mode{
+  background-color: rgb(48 47 53);
+}
 .active {
   border-right: 4px solid #a4a9fc;
   background: rgb(18, 26, 71);
+}
+.active.dark-mode{
+  background-color: rgb(48 47 53);
 }
 .link_text {
   white-space: nowrap;

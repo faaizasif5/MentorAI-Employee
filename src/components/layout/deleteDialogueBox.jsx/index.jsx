@@ -9,6 +9,12 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { tokens } from "../../../theme";
+import { useDarkMode } from "../../../context/DarkModeContext";
+import {
+  DeleteModalCancelButtonStyle,
+  DeleteModalConfirmButtonStyle,
+  DeleteModalContentStyle,
+} from "../muiStyles";
 
 function deleteDialog({
   fullScreen,
@@ -19,6 +25,7 @@ function deleteDialog({
 }) {
   const theme = useTheme();
   const { t } = useTranslation();
+  const { isDarkMode } = useDarkMode();
   const colors = tokens(theme.palette.mode);
   return (
     <Dialog
@@ -26,6 +33,11 @@ function deleteDialog({
       open={isOpen}
       onClose={handleClickClose}
       aria-labelledby="responsive-dialog-title"
+      sx={{
+        "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+          backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
+        },
+      }}
     >
       <DialogTitle
         id="responsive-dialog-title"
@@ -33,12 +45,19 @@ function deleteDialog({
           fontSize: "20px",
           fontWeight: "bold",
           fontFamily: "Lato",
+          color: isDarkMode ? "white" : "black",
         }}
       >
         {title}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText style={{ fontFamily: "unset" }}>
+        <DialogContentText
+          // style={{
+          //   fontFamily: "unset",
+          //   color: isDarkMode ? "white" : "#e94343",
+          // }}
+          sx={DeleteModalContentStyle(isDarkMode)}
+        >
           <h5>{t("delete.DialogContentText")}</h5>
         </DialogContentText>
       </DialogContent>
@@ -46,24 +65,14 @@ function deleteDialog({
         <Button
           autoFocus
           onClick={handleClickClose}
-          style={{
-            height: "35px",
-            backgroundColor: colors.blueAccent[700],
-            color: theme.palette.common.white,
-            width: "45%",
-          }}
+          sx={DeleteModalCancelButtonStyle(isDarkMode, colors, theme)}
         >
           {t("delete.cancel")}
         </Button>
         <Button
           onClick={handleDeleteConfirm}
           autoFocus
-          style={{
-            height: "35px",
-            backgroundColor: theme.palette.error.main,
-            color: theme.palette.common.white,
-            width: "45%",
-          }}
+          sx={DeleteModalConfirmButtonStyle(isDarkMode, theme)}
         >
           {t("delete.delete")}
         </Button>

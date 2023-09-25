@@ -1,17 +1,4 @@
-import {
-  Box,
-  Modal,
-  Fade,
-  Grid,
-  List,
-  ListItem,
-  Avatar,
-  ListItemAvatar,
-  ListItemText,
-  Divider,
-  Backdrop,
-} from "@mui/material";
-import { useTranslation } from "react-i18next";
+import { Box, Modal, Fade, Grid, List, Divider, Backdrop } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
 import MailIcon from "@mui/icons-material/Mail";
 import HomeIcon from "@mui/icons-material/Home";
@@ -19,10 +6,12 @@ import DialpadIcon from "@mui/icons-material/Dialpad";
 import PersonIcon from "@mui/icons-material/Person";
 import DescriptionIcon from "@mui/icons-material/Description";
 import NumbersIcon from "@mui/icons-material/Numbers";
-import style from "../modalStyle/modalStyle";
+import { previewModalStyle } from "../muiStyles";
+import { useDarkMode } from "../../../context/DarkModeContext";
+import ModalListItem from "../modalListItem";
 
 function EmployeeModal({ open, handleClose, rowsData }) {
-  const { t } = useTranslation();
+  const { isDarkMode } = useDarkMode();
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -36,99 +25,49 @@ function EmployeeModal({ open, handleClose, rowsData }) {
       }}
     >
       <Fade in={open}>
-        <Box sx={style}>
+        <Box sx={previewModalStyle(isDarkMode)}>
           <Grid container>
             <Grid item xs={11}>
               <List sx={{ width: "100%" }}>
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <NumbersIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    sx={{ marginTop: "10px" }}
-                    primary={t("employee.id")}
-                    secondary={
-                      rowsData.line_manager_id
-                        ? rowsData.line_manager_id
-                        : rowsData.employee_id
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <PersonIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("employee.name")}
-                    secondary={`${rowsData.first_name} ${rowsData.last_name}`}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <MailIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("employee.email")}
-                    secondary={rowsData.email}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <WorkIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("employee.Designation")}
-                    secondary={rowsData.designation}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <DialpadIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("employee.Contact")}
-                    secondary={rowsData.contact_no}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <DescriptionIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("employee.cnic")}
-                    secondary={rowsData.cnic}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <HomeIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={t("employee.address")}
-                    secondary={rowsData.address}
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
+                <ModalListItem
+                  label="employee.id"
+                  value={
+                    rowsData.line_manager_id
+                      ? rowsData.line_manager_id
+                      : rowsData.employee_id
+                  }
+                  AvatarIcon={NumbersIcon}
+                />
+                <ModalListItem
+                  label="employee.name"
+                  value={`${rowsData.first_name} ${rowsData.last_name}`}
+                  AvatarIcon={PersonIcon}
+                />
+                <ModalListItem
+                  label="employee.email"
+                  value={rowsData.email}
+                  AvatarIcon={MailIcon}
+                />
+                <ModalListItem
+                  label="employee.Designation"
+                  value={rowsData.designation}
+                  AvatarIcon={WorkIcon}
+                />
+                <ModalListItem
+                  label="employee.Contact"
+                  value={rowsData.contact_no}
+                  AvatarIcon={DialpadIcon}
+                />
+                <ModalListItem
+                  label="employee.cnic"
+                  value={rowsData.cnic}
+                  AvatarIcon={DescriptionIcon}
+                />
+                <ModalListItem
+                  label="employee.address"
+                  value={rowsData.address}
+                  AvatarIcon={HomeIcon}
+                />
               </List>
             </Grid>
             <Divider sx={{ margin: "16px 0", backgroundColor: "black" }} />

@@ -2,9 +2,10 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Dark mode styles */
+.App.dark-mode {
+  background-color: #161616;
+  color: white; 
 }
 
 @media (prefers-reduced-motion: no-preference) {
