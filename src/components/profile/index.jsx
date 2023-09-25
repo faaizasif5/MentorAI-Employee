@@ -25,7 +25,7 @@ function Profile() {
   return (
     <>
       <Header title="Profile Details" subtitle="View Your Profile Details" />
-      <Box sx={ProfileBoxStyle}>
+      <Box sx={ProfileBoxStyle(isDarkMode)}>
         <Stack direction="row" spacing={4}>
           <ProfileDivider isDarkMode={isDarkMode} />
           <Stack direction="column" justifyContent="space-evenly">
