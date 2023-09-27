@@ -66,7 +66,7 @@ export const LoadBox = {
   marginTop: "19px",
 };
 export const ProgressBox = {
-  width: "440px",
+  width: "32vw",
   height: "4px",
   flexShrink: 0,
   borderRadius: "7.5px",
