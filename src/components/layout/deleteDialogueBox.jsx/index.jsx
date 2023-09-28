@@ -34,8 +34,9 @@ function deleteDialog({
       open={isOpen}
       onClose={handleClickClose}
       aria-labelledby="responsive-dialog-title"
-      sx={{
-        "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+      className="custom-dialog" // Add a class to your Dialog
+      PaperProps={{
+        sx: {
           backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
         },
       }}
