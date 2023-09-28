@@ -34,7 +34,7 @@ function AddDialog({
       open={addOpen}
       onClose={handleAddClose}
       sx={{
-        "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+        '[class*="MuiPaper-root"][class*="MuiDialog-paper"]': {
           backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
         },
       }}
