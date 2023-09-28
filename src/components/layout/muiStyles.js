@@ -115,7 +115,7 @@ export const PieChartStyle = (isDarkMode) => {
   return {
     "--ChartsLegend-rootOffsetX": "200px",
     "--ChartsLegend-rootOffsetY": "-75px",
-    ".css-1js10na-MuiChartsLegend-label": {
+    '[class*="MuiChartsLegend-label"]': {
       fill: isDarkMode ? "white" : "black",
     },
   };

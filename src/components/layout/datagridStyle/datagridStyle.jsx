@@ -31,14 +31,16 @@ const CustomDataGridStyles = (isDarkMode) => {
     "& .MuiCheckbox-root": {
       color: `${colors.greenAccent[200]} !important`,
     },
-    "& .css-hpjhlg-MuiTablePagination-root .MuiTablePagination-selectLabel": {
-      color: "black",
-      marginTop: "8px",
-    },
-    "& .css-7ms3qr-MuiTablePagination-displayedRows": {
-      color: "black",
-      marginTop: "11px",
-    },
+    '[class*="MuiTablePagination-root"] [class*="MuiTablePagination-selectLabel"]':
+      {
+        color: "black",
+        marginTop: "8px",
+      },
+    '[class*="MuiTablePagination-root"] [class*="MuiTablePagination-displayedRows"]':
+      {
+        color: "black",
+        marginTop: "11px",
+      },
   };
 
   return dataGridStyles;
