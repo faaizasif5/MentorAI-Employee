@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 export const DashboardTitleBoxStyle = {
   width: "479.65px",
   height: "54.854px",
@@ -345,25 +346,25 @@ export const ProfileBoxStyle = (isDarkMode) => {
 };
 export const FormTextBoxStyle = (isDarkMode) => {
   return {
-    "& .css-192k3kr-MuiFormControl-root-MuiTextField-root": {
+    '& [class*="MuiFormControl-root"][class*="MuiTextField-root"]': {
       backgroundColor: isDarkMode ? "#252424" : "#ffffff",
     },
-    "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
+    '& [class*="MuiOutlinedInput-notchedOutline"]': {
       borderColor: isDarkMode ? "rgba(223, 223, 223, 0.7)" : "#c4c4c4",
     },
-    "& .css-1b9mdof-MuiFormLabel-root-MuiInputLabel-root": {
+    '& [class*="MuiFormLabel-root"][class*="MuiInputLabel-root"]': {
       color: isDarkMode ? "white" : "black",
     },
-    "& .css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input": {
+    '& [class*="MuiInputBase-input"][class*="MuiOutlinedInput-input"]': {
       color: isDarkMode ? "white" : "black",
     },
-    "& .css-1fb9e9w-MuiFormControl-root-MuiTextField-root": {
+    '& [class*="MuiFormControl-root"][class*="MuiTextField-root"]': {
       backgroundColor: "#252424",
     },
-    "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
+    '& [class*="MuiInputBase-input"][class*="MuiOutlinedInput-input"]': {
       color: isDarkMode ? "white" : "black",
     },
-    "& .css-v0ez7n-MuiFormLabel-root-MuiInputLabel-root": {
+    '& [class*="MuiFormLabel-root"][class*="MuiInputLabel-root"]': {
       color: isDarkMode ? "white" : "black",
     },
   };
