@@ -212,3 +212,11 @@ export const useMode = () => {
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   return [theme, colorMode];
 };
+const themes = {
+  lightmodeFontColor: "black",
+  darkmodefontColor: "white",
+  boldFont: "Gilroy-Bold",
+  lightmodeBoxColor: "white",
+  darkmodeBoxColor: "rgb(48 47 53)",
+};
+export default themes;

@@ -22,7 +22,17 @@ const en = {
     googleSignup: `Sign in with Google 🚀`,
   },
   dashboard: {
+    dashboard: `Dashboard`,
+    EmployeeLoad: `Employee Load`,
+    stress: `Overall Employee Stress`,
+    piechart: `Piechart`,
+    redAlertEmployees: `Employees on Red Alert`,
+    averagemoodemployee: `Avg Employee’s Mood`,
+    basedontheresult: `Based on the results`,
     title: `Hello User`,
+    good: `Good`,
+    neural: `Neutral`,
+    verygood: `Very Good`,
     subtitle: `Welcome to your dashboard`,
   },
   delete: {

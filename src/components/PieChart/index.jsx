@@ -1,22 +1,21 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import PieChartGraph from "./PieChartGraph";
 import { PieChartdata } from "../../constants/dummydata";
-import { PieChartBoxStyle, PieChartTypographyStyle } from "../layout/muiStyles";
+import {
+  PieChartBoxStyle,
+  PieChartTypographyStyle,
+} from "../../styles/muiStyles";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 function PieChartBox() {
+  const { t } = useTranslation();
   const { isDarkMode } = useDarkMode();
   return (
-    <Box
-      gridColumn="span 1"
-      gridRow="span 1"
-      width="90vh"
-      height="374px"
-      sx={PieChartBoxStyle(isDarkMode)}
-    >
+    <Box sx={PieChartBoxStyle(isDarkMode)}>
       <Typography variant="h6" sx={PieChartTypographyStyle(isDarkMode)}>
-        PieChart
+        {t("dashboard.piechart")}
       </Typography>
       <PieChartGraph chartData={PieChartdata} />
     </Box>

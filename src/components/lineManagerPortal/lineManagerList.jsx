@@ -7,13 +7,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import Header from "../layout/header/index";
 import DeleteDialog from "../layout/deleteDialogueBox.jsx";
 import PreviewModal from "../layout/previewModal/index";
-import dataGridStyles from "../layout/datagridStyle/datagridStyle";
+import { dataGridStyles } from "../../styles/muiStyles";
 import AddDialog from "../layout/AddDialog";
 import { setLineManagerToEmployee } from "../../redux/reducers/employeeSlice";
 import LinemanagerTableColumns from "../../constants/LineManagertableColumns";
 import deleteAccount from "../common/deleteHandler/deleteHandler";
 import handleAssignClick from "../common/assignHandler/assignHandler";
 import { useDarkMode } from "../../context/DarkModeContext";
+import { tokens } from "../../theme";
 import {
   setLineManagerData,
   setEmployeeToLineManager,
@@ -29,6 +30,7 @@ function lineManagerList() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { isDarkMode } = useDarkMode();
+  const colors = tokens(theme.palette.mode);
   const tableData = useSelector((state) => state.lineManager.lineManagerData);
   const employeeData = useSelector((state) => state.employee.employeeData);
   const [addOpen, setaddOpen] = useState(false);
@@ -75,7 +77,7 @@ function lineManagerList() {
         subtitle={t("linemanager.subtitle")}
         sx={{ marginTop: 4 }}
       />
-      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles(isDarkMode)}>
+      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles(isDarkMode, colors)}>
         <DataGrid
           rows={tableData}
           columns={LinemanagerTableColumns({

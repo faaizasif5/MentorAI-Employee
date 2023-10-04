@@ -6,9 +6,10 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router-dom";
 import AddAccountButton from "../common/addButton/addAccountButton";
 import Header from "../layout/header/index";
+import { tokens } from "../../theme";
 import DeleteDialog from "../layout/deleteDialogueBox.jsx";
 import PreviewModal from "../layout/previewModal/index";
-import dataGridStyles from "../layout/datagridStyle/datagridStyle";
+import { dataGridStyles } from "../../styles/muiStyles";
 import { setTableReduxData } from "../../redux/reducers/employeeSlice";
 import EmployeeTableColumns from "../../constants/EmployeeTableColumn";
 import deleteAccount from "../common/deleteHandler/deleteHandler";
@@ -16,6 +17,7 @@ import { useDarkMode } from "../../context/DarkModeContext";
 
 function EmployeeList() {
   const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -51,7 +53,7 @@ function EmployeeList() {
   return (
     <Box display="flex" flexDirection="column" height="100vh">
       <Header title={t("employee.title")} subtitle={t("employee.subtitle")} />
-      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles(isDarkMode)}>
+      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles(isDarkMode, colors)}>
         <AddAccountButton
           handleAddClick={handleAddClick}
           title={t("employee.button")}

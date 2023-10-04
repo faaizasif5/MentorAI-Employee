@@ -1,19 +1,12 @@
-import { Box, Button, TextField, AlertTitle, useTheme } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 import { useState } from "react";
 import { Formik } from "formik";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Alert from "@mui/material/Alert";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { useDispatch } from "react-redux";
+import FormFields from "../layout/FormTextFeild";
+import { projectformFields } from "../../constants/registrationFormFeild";
 import Header from "../layout/header/index";
 import dummyData from "../../constants/dummydata";
 import { projectInitialValues } from "../../constants/initialvalues";
@@ -22,13 +15,22 @@ import { MenuProps } from "../layout/dropdownLayout/dropdownLayout";
 import calculateDuration from "../../helpers/calculateDuration";
 import { handleProjectFormSubmit } from "../common/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
+import DatePicker from "../layout/datePicker";
 import { useDarkMode } from "../../context/DarkModeContext";
 import {
   formatStartDateText,
   formatLastDateText,
 } from "../../helpers/formatDate";
+import SuccessAlert from "../layout/successAlert";
+import ResourcePicker from "../layout/resourcePicker";
 import dropdownStyles from "../layout/dropdownStyle/style";
-import { FormTextBoxStyle, DarkModeFontColour } from "../layout/muiStyles";
+import {
+  ResgistrationFormStyle,
+  ProjectResgistrationFormBoxStyle,
+  ResgistrationButtonBoxStyle,
+  DarkModeFontColour,
+  ResgistrationButtonStyle,
+} from "../../styles/muiStyles";
 
 function AddProject() {
   const today = dayjs();
@@ -87,121 +89,63 @@ function AddProject() {
         }) => (
           <form
             onSubmit={handleSubmit}
-            style={{
-              background: isDarkMode ? "rgb(48 47 53)" : "#fcfcfc",
-              padding: "18px",
-              // paddingTop: "40px",
-              borderRadius: "10px",
-              marginTop: "45px",
-            }}
+            style={ResgistrationFormStyle(isDarkMode)}
           >
-            <Box
-              display="inline-grid"
-              gap="30px"
-              gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-              marginTop={12}
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-              }}
-            >
-              <TextField
-                fullWidth
-                type="text"
-                label={t("project.name")}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.name}
-                name="name"
-                error={!!touched.name && !!errors.name}
-                helperText={touched.name && errors.name}
-                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
+            <Box sx={ProjectResgistrationFormBoxStyle(isNonMobile)}>
+              <FormFields
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                values={values}
+                touched={touched}
+                errors={errors}
+                isDarkMode={isDarkMode}
+                formFields={projectformFields}
               />
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <MobileDatePicker
-                  value={selectedStartDate}
-                  label={t("project.startDate")}
-                  onChange={handleStartDateChange}
-                  inputFormat={formatStartDateText}
-                  onBlur={handleBlur}
-                  minDate={today}
-                  sx={{ gridColumn: "span 1", ...FormTextBoxStyle(isDarkMode) }}
-                />
-              </LocalizationProvider>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <MobileDatePicker
-                  value={selectedLastDate}
-                  label={t("project.lastDate")}
-                  onChange={handleLastDateChange}
-                  inputFormat={formatLastDateText}
-                  minDate={today}
-                  sx={{ gridColumn: "span 1", ...FormTextBoxStyle(isDarkMode) }}
-                />
-              </LocalizationProvider>
-              <TextField
-                fullWidth
-                type="text"
-                label={t("project.description")}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.description}
-                name="description"
-                error={!!touched.description && !!errors.description}
-                helperText={touched.description && errors.description}
-                sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
+              <DatePicker
+                selectedDate={selectedStartDate}
+                label={t("project.startDate")}
+                onChange={handleStartDateChange}
+                inputFormat={formatStartDateText}
+                handleBlur={handleBlur}
+                minDate={today}
+                isDarkMode={isDarkMode}
               />
-              <FormControl sx={{ gridColumn: "span 2" }}>
-                <InputLabel
-                  id="demo-multiple-name-label"
-                  style={DarkModeFontColour(isDarkMode)}
-                >
-                  {t("project.pickResources")}
-                </InputLabel>
-                <Select
-                  labelId="designation-label"
-                  id="designation-label-name"
-                  multiple
-                  value={designationName}
-                  onChange={handleDropdownChange}
-                  variant="filled"
-                  input={<OutlinedInput label="Employees" />}
-                  MenuProps={MenuProps}
-                  sx={{ width: 500, color: isDarkMode ? "white" : "black" }}
-                >
-                  {dummyData.map((employee) => (
-                    <MenuItem
-                      key={employee.employee_id}
-                      value={employee.employee_id}
-                      style={dropdownStyles(
-                        employee.employee_id,
-                        designationName,
-                        theme,
-                        isDarkMode,
-                      )}
-                    >
-                      {`${employee.first_name} ${employee.last_name} (${employee.designation})`}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <DatePicker
+                selectedDate={selectedLastDate}
+                label={t("project.lastDate")}
+                onChange={handleLastDateChange}
+                inputFormat={formatLastDateText}
+                handleBlur={handleBlur}
+                minDate={today}
+                isDarkMode={isDarkMode}
+              />
+              <ResourcePicker
+                designationName={designationName}
+                handleDropdownChange={handleDropdownChange}
+                dummyData={dummyData}
+                DarkModeFontColour={DarkModeFontColour}
+                t={t}
+                theme={theme}
+                isDarkMode={isDarkMode}
+                MenuProps={MenuProps}
+                dropdownStyles={dropdownStyles}
+              />
             </Box>
-            <Box display="flex" justifyContent="center" mt="25px">
+            <Box sx={ResgistrationButtonBoxStyle}>
               <Button
                 type="submit"
                 color="success"
                 variant="contained"
-                sx={{ width: "400px", height: "40px" }}
+                sx={ResgistrationButtonStyle}
               >
                 {t("project.addProject")}
               </Button>
             </Box>
-            <Box display="grid" justifyContent="center" mt="30px">
-              {submit && (
-                <Alert severity="success" sx={{ width: "150px" }}>
-                  <AlertTitle>{t("project.success")}</AlertTitle>
-                  <strong>{t("project.alert")}</strong>
-                </Alert>
-              )}
-            </Box>
+            <SuccessAlert
+              submit={submit}
+              alertTitle={t("project.success")}
+              alertContent={t("project.alert")}
+            />
           </form>
         )}
       </Formik>

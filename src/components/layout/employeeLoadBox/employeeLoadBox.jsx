@@ -3,7 +3,7 @@ import ProgressLine from "../../LinearProgressGraphs/progressline";
 import EmojiBox from "../../LinearProgressGraphs/emojiBox";
 import Percentage from "../../LinearProgressGraphs/percentagecomponent";
 import LoadType from "../../LinearProgressGraphs/loadType";
-import { LoadBox, ProgressBox, ProgressText } from "../muiStyles";
+import { LoadBox, ProgressBox, ProgressText } from "../../../styles/muiStyles";
 
 function EmployeeLoadBox({ emoji, value, color, text, background, border }) {
   return (

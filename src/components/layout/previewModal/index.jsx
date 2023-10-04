@@ -6,7 +6,7 @@ import DialpadIcon from "@mui/icons-material/Dialpad";
 import PersonIcon from "@mui/icons-material/Person";
 import DescriptionIcon from "@mui/icons-material/Description";
 import NumbersIcon from "@mui/icons-material/Numbers";
-import { previewModalStyle } from "../muiStyles";
+import { previewModalStyle } from "../../../styles/muiStyles";
 import { useDarkMode } from "../../../context/DarkModeContext";
 import ModalListItem from "../modalListItem";
 

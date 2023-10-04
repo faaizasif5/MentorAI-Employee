@@ -15,7 +15,7 @@ import {
   DeleteModalConfirmButtonStyle,
   DeleteModalContentStyle,
   DarkModeFontColour,
-} from "../muiStyles";
+} from "../../../styles/muiStyles";
 
 function deleteDialog({
   fullScreen,
@@ -34,7 +34,7 @@ function deleteDialog({
       open={isOpen}
       onClose={handleClickClose}
       aria-labelledby="responsive-dialog-title"
-      className="custom-dialog" // Add a class to your Dialog
+      className="custom-dialog"
       PaperProps={{
         sx: {
           backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",

@@ -5,7 +5,7 @@ import Tooltip from "@mui/material/Tooltip";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
-import { logout } from "../../login/firebase";
+import { logout } from "../../../services/firebase";
 import { useDarkMode } from "../../../context/DarkModeContext";
 import "./sidebar.css";
 import Routes from "../../../config/routes";

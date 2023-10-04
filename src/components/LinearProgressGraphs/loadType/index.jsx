@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { LoadTypeTextStyle } from "../../layout/muiStyles";
+import { LoadTypeTextStyle } from "../../../styles/muiStyles";
 import { useDarkMode } from "../../../context/DarkModeContext";
 
 function LoadType(props) {

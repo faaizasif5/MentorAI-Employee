@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { PercentageTextStyle } from "../../layout/muiStyles";
+import { PercentageTextStyle } from "../../../styles/muiStyles";
 import { useDarkMode } from "../../../context/DarkModeContext";
 
 function Percentage(props) {

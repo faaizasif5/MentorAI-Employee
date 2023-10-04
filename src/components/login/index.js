@@ -7,7 +7,7 @@ import "./styles.css";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, signInWithGoogle } from "./firebase";
+import { auth, signInWithGoogle } from "../../services/firebase";
 import {
   setEmailState,
   setPasswordState,

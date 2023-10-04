@@ -1,5 +1,5 @@
 import React from "react";
-import { EmojiBoxStyle } from "../../layout/muiStyles";
+import { EmojiBoxStyle } from "../../../styles/muiStyles";
 
 function EmojiBox(props) {
   const { emoji } = props;

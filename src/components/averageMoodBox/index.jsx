@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import { useTranslation } from "react-i18next";
 import Typography from "@mui/material/Typography";
 import GoodMood from "../../assets/Emojis/Good mood.png";
 import {
@@ -10,33 +11,30 @@ import {
   MoodEmojiBoxStyle,
   MoodEmojiImgStyle,
   MoodEmojiDescStyle,
-} from "../layout/muiStyles";
+} from "../../styles/muiStyles";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 function AvgEmployeeMoodBox() {
+  const { t } = useTranslation();
   const { isDarkMode } = useDarkMode();
   return (
-    <Box
-      gridColumn="span 1"
-      gridRow="span 1"
-      sx={AvgEmployeeMoodBoxStyle(isDarkMode)}
-    >
+    <Box sx={AvgEmployeeMoodBoxStyle(isDarkMode)}>
       <Box>
         <Box sx={MoodContentBoxStyle}>
           <Typography variant="body1" sx={MoodContentTextStyle(isDarkMode)}>
-            Avg Employee’s Mood
+            {t("dashboard.averagemoodemployee")}
           </Typography>
         </Box>
         <Box sx={{ marginLeft: "70px" }}>
           <Typography variant="body1" sx={MoodContentSubTextStyle(isDarkMode)}>
-            Based on the results
+            {t("dashboard.basedontheresult")}
           </Typography>
         </Box>
       </Box>
       <Box sx={MoodEmojiBoxStyle}>
         <img src={GoodMood} alt="Good Mood" style={MoodEmojiImgStyle} />
         <Typography variant="body1" sx={MoodEmojiDescStyle}>
-          Good
+          {t("dashboard.good")}
         </Typography>
       </Box>
     </Box>

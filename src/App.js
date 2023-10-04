@@ -2,7 +2,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./components/login/firebase";
+import { auth } from "./services/firebase";
 import MainDashboard from "./components/mainDashboard";
 import Login from "./components/login";
 import { useDarkMode } from "./context/DarkModeContext";

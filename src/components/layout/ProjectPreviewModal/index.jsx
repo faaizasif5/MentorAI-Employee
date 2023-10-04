@@ -5,7 +5,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import DescriptionIcon from "@mui/icons-material/Description";
 import NumbersIcon from "@mui/icons-material/Numbers";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { previewModalStyle } from "../muiStyles";
+import { previewModalStyle } from "../../../styles/muiStyles";
 import { useDarkMode } from "../../../context/DarkModeContext";
 import ModalListItem from "../modalListItem";
 

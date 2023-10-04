@@ -1,7 +1,7 @@
 import { ListItem, Avatar, ListItemAvatar, ListItemText } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useDarkMode } from "../../../context/DarkModeContext";
-import { ListItemStyle } from "../muiStyles";
+import { ListItemStyle } from "../../../styles/muiStyles";
 
 function ModalListItem({ label, value, AvatarIcon }) {
   const { t } = useTranslation();

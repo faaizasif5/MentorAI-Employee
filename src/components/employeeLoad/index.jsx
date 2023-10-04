@@ -4,7 +4,10 @@ import HappyYellow from "../../assets/Emojis/happyYellow.png";
 import HappyBlue from "../../assets/Emojis/happyBlue.png";
 import HappyRed from "../../assets/Emojis/happyRed.png";
 import { tokens } from "../../theme";
-import { EmployeeBoxStyle, PieChartTypographyStyle } from "../layout/muiStyles";
+import {
+  EmployeeBoxStyle,
+  PieChartTypographyStyle,
+} from "../../styles/muiStyles";
 import { useDarkMode } from "../../context/DarkModeContext";
 import EmployeeLoadBox from "../layout/employeeLoadBox/employeeLoadBox";
 
@@ -14,10 +17,6 @@ function EmployeeLoad() {
   const { isDarkMode } = useDarkMode();
   return (
     <Box
-      gridColumn="span 1"
-      gridRow="span 1"
-      width="90vh"
-      height="378px"
       backgroundColor={colors.primary[400]}
       sx={EmployeeBoxStyle(isDarkMode)}
     >

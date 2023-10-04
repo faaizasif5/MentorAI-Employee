@@ -15,7 +15,7 @@ import AvatarImage from "../../assets/profileImage.jpg";
 import ProfileInfo from "../layout/profileDetails";
 import ProfileDateField from "../layout/dateField";
 import ProfileDivider from "../layout/ProfileDivider";
-import { ProfileBoxStyle } from "../layout/muiStyles";
+import { ProfileBoxStyle } from "../../styles/muiStyles";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 function Profile() {

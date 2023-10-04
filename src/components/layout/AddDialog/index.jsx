@@ -15,7 +15,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { tokens } from "../../../theme";
 import { useDarkMode } from "../../../context/DarkModeContext";
-import { DarkModeFontColour } from "../muiStyles";
+import { DarkModeFontColour } from "../../../styles/muiStyles";
 
 function AddDialog({
   addOpen,

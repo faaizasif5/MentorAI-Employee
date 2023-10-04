@@ -1,6 +1,6 @@
 import { setErrors } from "../redux/reducers/formErrorsSlice";
 import { Regex, validatorsValue } from "../constants/validators";
-import { logInWithEmailAndPassword } from "../components/login/firebase";
+import { logInWithEmailAndPassword } from "../services/firebase";
 import validators from "../locales/en";
 
 export default async function validate(values, capt, dispatch) {

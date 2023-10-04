@@ -20,10 +20,10 @@ function ProfileInfo({ label, value, AvatarIcon, isDarkMode }) {
           readOnly: true,
           style: {
             color: textColor,
-            borderBottom: isDarkMode ? "1px solid #d1d1d1" : "black", // Set the border color conditionally
+            borderBottom: isDarkMode ? "1px solid #d1d1d1" : "black",
           },
         }}
-        InputLabelProps={{ style: { color: isDarkMode ? "#d1d1d1" : "black" } }} // Set the label color explicitly
+        InputLabelProps={{ style: { color: isDarkMode ? "#d1d1d1" : "black" } }}
         variant="standard"
       />
     </Stack>

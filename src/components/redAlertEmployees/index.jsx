@@ -1,35 +1,33 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import { useTranslation } from "react-i18next";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Avatar from "@mui/material/Avatar";
 import { redAlertEmployees } from "../../constants/dummydata";
+import { useDarkMode } from "../../context/DarkModeContext";
 import {
   RedAlertBoxStyle,
   RedAlertTitleStyle,
   RedAlertContentBoxStyle,
+  RedAlertRowContent,
   RedAlertEmpName,
   RedAlertDate,
   RedAlertDivider,
   RedAlertFrequency,
-} from "../layout/muiStyles";
-import { useDarkMode } from "../../context/DarkModeContext";
+} from "../../styles/muiStyles";
 
 function RedAlertEmployees() {
+  const { t } = useTranslation();
   const { isDarkMode } = useDarkMode();
   return (
     <Box>
       <Box sx={RedAlertBoxStyle(isDarkMode)}>
         <Typography sx={RedAlertTitleStyle(isDarkMode)}>
-          Employees on Red Alert
+          {t("dashboard.redAlertEmployees")}
         </Typography>
       </Box>
       <Box
-        gridColumn="span 1"
-        gridRow="span 1"
-        width="597px"
-        maxHeight="282px"
-        marginTop="16px"
         sx={{
           ...RedAlertContentBoxStyle(isDarkMode),
           overflowY: "auto",
@@ -37,7 +35,7 @@ function RedAlertEmployees() {
       >
         {redAlertEmployees.map((employee) => (
           <div key={employee.id}>
-            <Box sx={{ display: "flex", mt: 2, ml: 4, alignItems: "center" }}>
+            <Box sx={RedAlertRowContent}>
               <Avatar alt={employee.name} src={employee.avatar} />
               <Typography sx={RedAlertEmpName(isDarkMode)}>
                 {employee.name}

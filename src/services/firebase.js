@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
   getAuth,
+  setPersistence, browserSessionPersistence,
   signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -17,12 +18,13 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
-import firebaseConfig from "../../config/firebaseConfig";
+import firebaseConfig from "../config/firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+setPersistence(auth, browserSessionPersistence);
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
@@ -37,6 +39,7 @@ const signInWithGoogle = async () => {
         email: user.email,
       });
     }
+    setPersistence(auth, browserSessionPersistence);
   } catch (err) {
     console.error(err);
     // alert(err.message);
