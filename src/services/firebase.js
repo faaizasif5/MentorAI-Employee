@@ -3,7 +3,8 @@ import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
   getAuth,
-  setPersistence, browserSessionPersistence,
+  setPersistence,
+  browserSessionPersistence,
   signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
