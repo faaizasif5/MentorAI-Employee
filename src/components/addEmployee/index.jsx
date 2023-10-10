@@ -18,7 +18,6 @@ import FormSubmitHandler from "../common/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
 import dropdownStyles from "../layout/dropdownStyle/style";
 import employeeformFields from "../../constants/registrationFormFeild";
-import { useDarkMode } from "../../context/DarkModeContext";
 import {
   DarkModeFontColour,
   ResgistrationFormStyle,
@@ -31,7 +30,6 @@ function Form() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { isDarkMode } = useDarkMode();
   const [submit, setSubmit] = useState(false);
   const [isLineManager, setIsLineManager] = useState(null);
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -80,10 +78,7 @@ function Form() {
           handleChange,
           handleSubmit,
         }) => (
-          <form
-            onSubmit={handleSubmit}
-            style={ResgistrationFormStyle(isDarkMode)}
-          >
+          <form onSubmit={handleSubmit} style={ResgistrationFormStyle()}>
             <Box sx={ResgistrationFormBoxStyle(isNonMobile)}>
               <FormFields
                 handleBlur={handleBlur}
@@ -91,7 +86,6 @@ function Form() {
                 values={values}
                 touched={touched}
                 errors={errors}
-                isDarkMode={isDarkMode}
                 formFields={employeeformFields}
               />
               <DesignationDropdown
@@ -101,7 +95,6 @@ function Form() {
                 DarkModeFontColour={DarkModeFontColour}
                 t={t}
                 theme={theme}
-                isDarkMode={isDarkMode}
                 MenuProps={MenuProps}
                 dropdownStyles={dropdownStyles}
               />
@@ -111,15 +104,14 @@ function Form() {
                 DarkModeFontColour={DarkModeFontColour}
                 t={t}
                 MenuProps={MenuProps}
-                isDarkMode={isDarkMode}
               />
-              <PhotoInput isDarkMode={isDarkMode} />
+              <PhotoInput />
             </Box>
             <Box sx={ResgistrationButtonBoxStyle}>
               <Button
                 type="submit"
                 variant="contained"
-                style={ResgistrationButtonStyle}
+                sx={ResgistrationButtonStyle}
               >
                 {t("addAccount.createEmployee")}
               </Button>

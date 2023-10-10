@@ -1,21 +1,19 @@
 import React from "react";
-import { logo } from "../../../assets";
-import "./styles.css";
+import { Box, CircularProgress } from "@mui/material";
 
-export function LazyLoader() {
+function LazyLoader() {
   return (
-    <div id="lazy-loader">
-      <img alt="img" src={logo} alt="logo" />
-      <svg className="lazy-loader" viewBox="0 0 50 50">
-        <circle
-          className="path"
-          cx="25"
-          cy="25"
-          r="20"
-          fill="none"
-          strokeWidth="5"
-        />
-      </svg>
-    </div>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <CircularProgress />
+    </Box>
   );
 }
+
+export default LazyLoader;

@@ -20,6 +20,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 import firebaseConfig from "../config/firebaseConfig";
+import { addItem } from "./storage-service";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -41,6 +42,7 @@ const signInWithGoogle = async () => {
       });
     }
     setPersistence(auth, browserSessionPersistence);
+    addItem("AccessToken", user.accessToken);
   } catch (err) {
     console.error(err);
     // alert(err.message);

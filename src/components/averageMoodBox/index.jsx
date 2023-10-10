@@ -12,21 +12,19 @@ import {
   MoodEmojiImgStyle,
   MoodEmojiDescStyle,
 } from "../../styles/muiStyles";
-import { useDarkMode } from "../../context/DarkModeContext";
 
 function AvgEmployeeMoodBox() {
   const { t } = useTranslation();
-  const { isDarkMode } = useDarkMode();
   return (
-    <Box sx={AvgEmployeeMoodBoxStyle(isDarkMode)}>
+    <Box sx={AvgEmployeeMoodBoxStyle()}>
       <Box>
         <Box sx={MoodContentBoxStyle}>
-          <Typography variant="body1" sx={MoodContentTextStyle(isDarkMode)}>
+          <Typography variant="body1" sx={MoodContentTextStyle()}>
             {t("dashboard.averagemoodemployee")}
           </Typography>
         </Box>
         <Box sx={{ marginLeft: "70px" }}>
-          <Typography variant="body1" sx={MoodContentSubTextStyle(isDarkMode)}>
+          <Typography variant="body1" sx={MoodContentSubTextStyle()}>
             {t("dashboard.basedontheresult")}
           </Typography>
         </Box>

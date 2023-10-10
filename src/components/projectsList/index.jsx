@@ -12,14 +12,12 @@ import dataGridStyles from "../layout/datagridStyle/datagridStyle";
 import dummyData, { project } from "../../constants/dummydata";
 import { deleteProject } from "../../redux/reducers/projectSlice";
 import ProjectModal from "../layout/ProjectPreviewModal";
-import { useDarkMode } from "../../context/DarkModeContext";
 
 function ProjectList() {
   const dispatch = useDispatch();
   const theme = useTheme();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { isDarkMode } = useDarkMode();
   const projectData = useSelector((state) => state.projects.projectData);
   const [tableData, setTableData] = useState(projectData);
   const [previewopen, setpreviewOpen] = useState(false);
@@ -79,7 +77,7 @@ function ProjectList() {
         title={t("project.projectList")}
         subtitle={t("project.projectListSubtitle")}
       />
-      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles(isDarkMode)}>
+      <Box m="40px 0 0 0" height="75vh" sx={dataGridStyles}>
         <AddAccountButton
           handleAddClick={handleAddClick}
           title={t("project.addProject")}

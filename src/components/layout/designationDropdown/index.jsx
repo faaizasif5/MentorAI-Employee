@@ -12,16 +12,12 @@ function DesignationDropdown({
   DarkModeFontColour,
   t,
   theme,
-  isDarkMode,
   MenuProps,
   dropdownStyles,
 }) {
   return (
     <FormControl sx={{ gridColumn: "span 2" }}>
-      <InputLabel
-        id="demo-multiple-name-label"
-        style={DarkModeFontColour(isDarkMode)}
-      >
+      <InputLabel id="demo-multiple-name-label" sx={DarkModeFontColour()}>
         {t("auth.designation")}
       </InputLabel>
       <Select
@@ -32,18 +28,13 @@ function DesignationDropdown({
         onChange={handleDropdownChange}
         input={<OutlinedInput label={t("auth.designation")} />}
         MenuProps={MenuProps}
-        sx={DarkModeFontColour(isDarkMode)}
+        sx={DarkModeFontColour()}
       >
         {designations.map((designation) => (
           <MenuItem
             key={designation}
             value={designation}
-            style={dropdownStyles(
-              designation,
-              designationName,
-              theme,
-              isDarkMode,
-            )}
+            sx={dropdownStyles(designation, designationName, theme)}
           >
             {designation}
           </MenuItem>

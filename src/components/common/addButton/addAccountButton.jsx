@@ -11,7 +11,7 @@ function AddAccountButton({ handleAddClick, title }) {
       <Button
         variant="contained"
         color="success"
-        style={addAccountButton}
+        sx={addAccountButton}
         startIcon={<AddIcon />}
         onClick={handleAddClick}
       >

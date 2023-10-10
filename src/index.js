@@ -11,8 +11,9 @@ import { DarkModeProvider } from "./context/DarkModeContext";
 import "./i18n";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 root.render(
-  <GoogleOAuthProvider clientId="1067620703301-pnkmi2cr21m6if4ad4mfcd636nnm9f6p.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={googleClientId}>
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>

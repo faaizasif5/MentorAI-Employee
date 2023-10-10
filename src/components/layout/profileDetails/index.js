@@ -1,8 +1,9 @@
 import React from "react";
 import { Stack, ListItemAvatar, Avatar, TextField } from "@mui/material";
+import isdarkmode from "../../../helpers/darkmodeHelper";
 
-function ProfileInfo({ label, value, AvatarIcon, isDarkMode }) {
-  const textColor = isDarkMode ? "rgb(237 237 237)" : "black";
+function ProfileInfo({ label, value, AvatarIcon }) {
+  const textColor = isdarkmode() ? "rgb(237 237 237)" : "black";
 
   return (
     <Stack direction="row" alignItems="center">
@@ -20,10 +21,12 @@ function ProfileInfo({ label, value, AvatarIcon, isDarkMode }) {
           readOnly: true,
           style: {
             color: textColor,
-            borderBottom: isDarkMode ? "1px solid #d1d1d1" : "black",
+            borderBottom: isdarkmode() ? "1px solid #d1d1d1" : "black",
           },
         }}
-        InputLabelProps={{ style: { color: isDarkMode ? "#d1d1d1" : "black" } }}
+        InputLabelProps={{
+          style: { color: isdarkmode() ? "#d1d1d1" : "black" },
+        }}
         variant="standard"
       />
     </Stack>

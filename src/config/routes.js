@@ -4,8 +4,22 @@ import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import PortraitIcon from "@mui/icons-material/Portrait";
 import TaskIcon from "@mui/icons-material/Task";
 import Logout from "@mui/icons-material/Logout";
+import React, { Suspense } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const Routes = [
+const Dashboard = React.lazy(() => import("../components/dashboard"));
+const EmployeeList = React.lazy(() => import("../components/employeeList"));
+const AddEmployee = React.lazy(() => import("../components/addEmployee"));
+const LineManagerList = React.lazy(() =>
+  import("../components/lineManagerPortal/lineManagerList"),
+);
+const ProjectList = React.lazy(() =>
+  import("../components/projectsList/index"),
+);
+const AddProject = React.lazy(() => import("../components/addProject/index"));
+const Profile = React.lazy(() => import("../components/profile/index"));
+
+const SidebarRoutes = [
   {
     path: "/dashboard/home",
     name: "Dashboard",
@@ -36,30 +50,65 @@ const Routes = [
     name: "Logout",
     icon: <Logout />,
   },
-  // {
-  //     name: "Login",
-  //     path: "/login",
-  //     component: lazy(() =>
-  //     import("../components/login")
-  //     ),
-  //     requireAuthentication: false,
-  // },
-  // {
-  //     name: "Signup",
-  //     path: "/signup",
-  //     component: lazy(() =>
-  //     import("../components/signup")
-  //     ),
-  //     requireAuthentication: false,
-  // },
-  // {
-  //     name: "Dashboard",
-  //     path: "/dashboard",
-  //     component: lazy(() =>
-  //     import("../components/dashboard")
-  //     ),
-  //     requireAuthentication: true,
-  // },
 ];
 
-export default Routes;
+export default SidebarRoutes;
+
+export const routes = [
+  {
+    path: "home",
+    element: (
+      <Suspense fallback={<CircularProgress />}>
+        <Dashboard />
+      </Suspense>
+    ),
+  },
+  {
+    path: "employee",
+    element: (
+      <Suspense fallback={<CircularProgress />}>
+        <EmployeeList />
+      </Suspense>
+    ),
+  },
+  {
+    path: "addEmployee",
+    element: (
+      <Suspense fallback={<CircularProgress />}>
+        <AddEmployee />
+      </Suspense>
+    ),
+  },
+  {
+    path: "lineManager",
+    element: (
+      <Suspense fallback={<CircularProgress />}>
+        <LineManagerList />
+      </Suspense>
+    ),
+  },
+  {
+    path: "projects",
+    element: (
+      <Suspense fallback={<CircularProgress />}>
+        <ProjectList />
+      </Suspense>
+    ),
+  },
+  {
+    path: "addProject",
+    element: (
+      <Suspense fallback={<CircularProgress />}>
+        <AddProject />
+      </Suspense>
+    ),
+  },
+  {
+    path: "profile",
+    element: (
+      <Suspense fallback={<CircularProgress />}>
+        <Profile />
+      </Suspense>
+    ),
+  },
+];

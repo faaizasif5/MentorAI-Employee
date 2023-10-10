@@ -9,23 +9,21 @@ import {
   LoadTitle,
   StressTitle,
 } from "../../../styles/muiStyles";
-import { useDarkMode } from "../../../context/DarkModeContext";
 
 function DashboardTitle() {
   const { t } = useTranslation();
-  const { isDarkMode } = useDarkMode();
   return (
     <>
       <Box sx={DashboardTitleBoxStyle}>
-        <Typography sx={DashboardTitleTextStyle(isDarkMode)}>
+        <Typography sx={DashboardTitleTextStyle()}>
           {t("dashboard.dashboard")}
         </Typography>
       </Box>
       <Box sx={LoadStressTitleBox}>
-        <Typography variant="h6" sx={LoadTitle(isDarkMode)}>
+        <Typography variant="h6" sx={LoadTitle()}>
           {t("dashboard.EmployeeLoad")}
         </Typography>
-        <Typography variant="h6" sx={StressTitle(isDarkMode)}>
+        <Typography variant="h6" sx={StressTitle()}>
           {t("dashboard.stress")}
         </Typography>
       </Box>

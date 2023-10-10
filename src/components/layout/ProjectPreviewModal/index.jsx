@@ -6,11 +6,9 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import NumbersIcon from "@mui/icons-material/Numbers";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { previewModalStyle } from "../../../styles/muiStyles";
-import { useDarkMode } from "../../../context/DarkModeContext";
 import ModalListItem from "../modalListItem";
 
 function ProjectModal({ open, handleClose, rowsData, getResourceNames }) {
-  const { isDarkMode } = useDarkMode();
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -24,7 +22,7 @@ function ProjectModal({ open, handleClose, rowsData, getResourceNames }) {
       }}
     >
       <Fade in={open}>
-        <Box sx={previewModalStyle(isDarkMode)}>
+        <Box sx={previewModalStyle}>
           <Grid container>
             <Grid item xs={11}>
               <List sx={{ width: "100%" }}>

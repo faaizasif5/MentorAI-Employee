@@ -12,8 +12,10 @@ import {
   setEmailState,
   setPasswordState,
 } from "../../redux/reducers/authSlice";
-import { clearErrors } from "../../redux/reducers/formErrorsSlice";
 import validate from "../../helpers/formValidator";
+import FormFields from "../../constants/forms";
+import signin from "../../services/auth";
+import { addItem } from "../../services/storage-service";
 
 function Login() {
   const { t } = useTranslation();
@@ -29,14 +31,7 @@ function Login() {
   const [user, loading] = useAuthState(auth);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (loading) {
-      // Trigger a loading screen
-      return;
-    }
-    if (user) {
-      dispatch(clearErrors());
-      navigate("/dashboard/home");
-    }
+    signin(user, loading, navigate, dispatch);
   }, [user, loading, iscaptcha]);
   function handleCaptcha() {
     setIsCaptcha(true);
@@ -49,13 +44,12 @@ function Login() {
     const { name, value } = e.target;
     if (e.target.type === "email") {
       setEmail(e.target.value);
-      localStorage.setItem("loggedInUserEmail", e.target.value);
+      addItem("loggedInUserEmail", e.target.value);
     } else {
       setPassword(e.target.value);
     }
     setFormValues({ ...formValues, [name]: value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     validate(formValues, iscaptcha, dispatch);
@@ -74,28 +68,20 @@ function Login() {
             <h1>{t("loginHeading")}</h1>
             <div className="ui divider" />
             <div className="ui form">
-              <div className="field">
-                <label htmlFor="emailInput">{t("auth.email")}</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formValues.email}
-                  onChange={handleChange}
-                />
-                <p>{formErrors.email}</p>
-              </div>
-              <div className="field">
-                <label htmlFor="passwordInput">{t("auth.password")}</label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formValues.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <p>{formErrors.password}</p>
+              {FormFields.map((field) => (
+                <div className="field" key={field.name}>
+                  <label htmlFor={`${field.name}Input`}>{field.label}</label>
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    placeholder={field.placeholder}
+                    value={formValues[field.name]}
+                    onChange={handleChange}
+                  />
+                  <p>{formErrors[field.name]}</p>
+                </div>
+              ))}
+
               <div className="captcha">
                 <ReCAPTCHA
                   sitekey={process.env.REACT_APP_RECAPTCHA_KEY}

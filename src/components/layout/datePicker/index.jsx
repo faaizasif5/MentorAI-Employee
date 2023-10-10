@@ -11,7 +11,6 @@ function DatePicker({
   inputFormat,
   handleBlur,
   minDate,
-  isDarkMode,
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -22,7 +21,7 @@ function DatePicker({
         inputFormat={inputFormat}
         onBlur={handleBlur}
         minDate={minDate}
-        sx={{ gridColumn: "span 1", ...FormTextBoxStyle(isDarkMode) }}
+        sx={{ gridColumn: "span 1", ...FormTextBoxStyle() }}
       />
     </LocalizationProvider>
   );

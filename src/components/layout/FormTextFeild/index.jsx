@@ -8,7 +8,6 @@ function FormFields({
   values,
   touched,
   errors,
-  isDarkMode,
   formFields,
 }) {
   return (
@@ -25,7 +24,7 @@ function FormFields({
           name={field.name}
           error={!!touched[field.name] && !!errors[field.name]}
           helperText={touched[field.name] && errors[field.name]}
-          sx={{ gridColumn: "span 2", ...FormTextBoxStyle(isDarkMode) }}
+          sx={{ gridColumn: "span 2", ...FormTextBoxStyle() }}
         />
       ))}
     </>

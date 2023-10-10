@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import Avatar from "@mui/material/Avatar";
 import { redAlertEmployees } from "../../constants/dummydata";
-import { useDarkMode } from "../../context/DarkModeContext";
 import {
   RedAlertBoxStyle,
   RedAlertTitleStyle,
@@ -16,30 +15,32 @@ import {
   RedAlertDivider,
   RedAlertFrequency,
 } from "../../styles/muiStyles";
+import isdarkmode from "../../helpers/darkmodeHelper";
 
 function RedAlertEmployees() {
   const { t } = useTranslation();
-  const { isDarkMode } = useDarkMode();
   return (
     <Box>
-      <Box sx={RedAlertBoxStyle(isDarkMode)}>
-        <Typography sx={RedAlertTitleStyle(isDarkMode)}>
+      <Box sx={RedAlertBoxStyle}>
+        <Typography sx={RedAlertTitleStyle}>
           {t("dashboard.redAlertEmployees")}
         </Typography>
       </Box>
       <Box
         sx={{
-          ...RedAlertContentBoxStyle(isDarkMode),
+          ...RedAlertContentBoxStyle,
           overflowY: "auto",
+          backgroundColor: isdarkmode() ? "rgb(48 47 53)" : "white",
+          borderRadius: "16px",
+          paddingBottom: "20px",
+          marginTop: "10px",
         }}
       >
         {redAlertEmployees.map((employee) => (
           <div key={employee.id}>
             <Box sx={RedAlertRowContent}>
               <Avatar alt={employee.name} src={employee.avatar} />
-              <Typography sx={RedAlertEmpName(isDarkMode)}>
-                {employee.name}
-              </Typography>
+              <Typography sx={RedAlertEmpName}>{employee.name}</Typography>
               <Typography sx={{ ...RedAlertFrequency, marginLeft: "110px" }}>
                 {employee.frequency}
               </Typography>

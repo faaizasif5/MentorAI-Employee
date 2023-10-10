@@ -7,11 +7,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import DescriptionIcon from "@mui/icons-material/Description";
 import NumbersIcon from "@mui/icons-material/Numbers";
 import { previewModalStyle } from "../../../styles/muiStyles";
-import { useDarkMode } from "../../../context/DarkModeContext";
 import ModalListItem from "../modalListItem";
 
 function EmployeeModal({ open, handleClose, rowsData }) {
-  const { isDarkMode } = useDarkMode();
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -25,7 +23,7 @@ function EmployeeModal({ open, handleClose, rowsData }) {
       }}
     >
       <Fade in={open}>
-        <Box sx={previewModalStyle(isDarkMode)}>
+        <Box sx={previewModalStyle}>
           <Grid container>
             <Grid item xs={11}>
               <List sx={{ width: "100%" }}>

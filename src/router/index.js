@@ -1,45 +1,31 @@
 import React, { Suspense } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { LazyLoader } from "Layout/lazy-loader";
-import Routes from "Config/routes";
-import { isLoggedIn } from "Helpers/auth-helper";
+import { Routes, Route } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../services/firebase";
+import MainDashboard from "../components/mainDashboard";
+import Login from "../components/login";
+import { routes } from "../config/routes";
+import LazyLoader from "../components/layout/lazy-loader";
 
 function AppRouter() {
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <LazyLoader />;
+  }
+
   return (
     <Suspense fallback={<LazyLoader />}>
-      <Switch>
-        {isLoggedIn()
-          ? // ONLY AUTHENTICATED ROUTES AVAILABLE IF LOGGED IN
-            Routes.filter((route) => route.requireAuthentication).map(
-              (route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  component={route.component}
-                />
-              ),
-            )
-          : // ONLY NON-AUTHENTICATED ROUTES AVAILABLE IF LOGGED OUT
-            Routes.filter((route) => !route.requireAuthentication).map(
-              (route) => {
-                return (
-                  <Route
-                    key={route.name}
-                    path={route.path}
-                    component={route.component}
-                  />
-                );
-              },
-            )}
-
-        <Route path="*">
-          {isLoggedIn() ? (
-            <Redirect to="/dashboard" />
-          ) : (
-            <Redirect to="/login" />
-          )}
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/dashboard/*"
+          element={user ? <MainDashboard /> : <Login />}
+        />
+        {routes.map((route) => (
+          <Route key={route.path} path={route.path} element={route.element} />
+        ))}
+      </Routes>
     </Suspense>
   );
 }

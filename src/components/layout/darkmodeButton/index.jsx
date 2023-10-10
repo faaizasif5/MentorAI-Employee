@@ -11,7 +11,7 @@ import {
 function DarkmoodButton() {
   const { isDarkMode, colorMode, toggleDarkMode } = useDarkMode();
   return (
-    <Box sx={DarkmodeButtonBoxStyle(isDarkMode)}>
+    <Box sx={DarkmodeButtonBoxStyle}>
       <Button
         startIcon={
           isDarkMode ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />
@@ -19,9 +19,7 @@ function DarkmoodButton() {
         onClick={toggleDarkMode}
         sx={DarkmodeButton}
       >
-        <Typography sx={DarkmodeButtonFontStyle(isDarkMode)}>
-          {colorMode}
-        </Typography>
+        <Typography sx={DarkmodeButtonFontStyle}>{colorMode}</Typography>
       </Button>
     </Box>
   );

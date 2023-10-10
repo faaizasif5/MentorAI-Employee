@@ -5,9 +5,10 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import Stack from "@mui/material/Stack";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import isdarkmode from "../../../helpers/darkmodeHelper";
 import themes from "../../../theme";
 
-function ProfileDateField({ label, value, onChange, isDarkMode }) {
+function ProfileDateField({ label, value, onChange }) {
   return (
     <Stack direction="row" alignItems="center">
       <ListItemAvatar>
@@ -25,14 +26,14 @@ function ProfileDateField({ label, value, onChange, isDarkMode }) {
             sx={{ width: 300, maxWidth: "100%" }}
             InputLabelProps={{
               style: {
-                color: isDarkMode
+                color: isdarkmode()
                   ? themes.darkmodefontColor
                   : themes.lightmodeFontColor,
               },
             }}
             inputProps={{
               style: {
-                color: isDarkMode
+                color: isdarkmode()
                   ? themes.darkmodefontColor
                   : themes.lightmodeFontColor,
               },

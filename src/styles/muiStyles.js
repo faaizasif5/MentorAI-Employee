@@ -1,5 +1,6 @@
 /* eslint-disable no-dupe-keys */
 import themes from "../theme";
+import isdarkmode from "../helpers/darkmodeHelper";
 
 export const DashboardTitleBoxStyle = {
   width: "479.65px",
@@ -9,9 +10,9 @@ export const DashboardTitleBoxStyle = {
   alignItems: "center",
   marginLeft: "10px",
 };
-export const DarkmodeButtonBoxStyle = (isDarkMode) => {
+export const DarkmodeButtonBoxStyle = () => {
   return {
-    backgroundColor: isDarkMode ? "rgb(48 47 53)" : "#fefefe",
+    backgroundColor: isdarkmode() ? "rgb(48 47 53)" : "#fefefe",
     borderRadius: "40px",
     display: "flex",
     width: "12vw",
@@ -22,10 +23,10 @@ export const DarkmodeButtonBoxStyle = (isDarkMode) => {
     boxShadow: "0px 16px 24px 0px rgba(0, 0, 0, 0.02)",
   };
 };
-export const DarkmodeButtonFontStyle = (isDarkMode) => {
+export const DarkmodeButtonFontStyle = () => {
   return {
     fontFamily: "Gilroy-Bold, sans-serif",
-    color: isDarkMode ? "white" : "black",
+    color: isdarkmode() ? "white" : "black",
   };
 };
 export const DarkmodeButton = {
@@ -58,9 +59,9 @@ export const DashboardInnerBoxStyle = {
   justifyContent: "center",
   alignItems: "center",
 };
-export const DashboardTitleTextStyle = (isDarkMode) => {
+export const DashboardTitleTextStyle = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "31.373px",
     fontStyle: "normal",
@@ -68,9 +69,9 @@ export const DashboardTitleTextStyle = (isDarkMode) => {
     lineHeight: "normal",
   };
 };
-export const DarkModeFontColour = (isDarkMode) => {
+export const DarkModeFontColour = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
   };
 };
 export const LoadStressTitleBox = {
@@ -79,9 +80,9 @@ export const LoadStressTitleBox = {
   marginBottom: 1,
   marginTop: 1,
 };
-export const LoadTitle = (isDarkMode) => {
+export const LoadTitle = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "20px",
     fontStyle: "normal",
@@ -90,9 +91,9 @@ export const LoadTitle = (isDarkMode) => {
     alignItems: "flex-start",
   };
 };
-export const StressTitle = (isDarkMode) => {
+export const StressTitle = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "20px",
     fontStyle: "normal",
@@ -101,7 +102,7 @@ export const StressTitle = (isDarkMode) => {
     marginLeft: "75vh",
   };
 };
-export const EmployeeBoxStyle = (isDarkMode) => {
+export const EmployeeBoxStyle = () => {
   return {
     gridColumn: "span 1",
     gridRow: "span 1",
@@ -109,7 +110,9 @@ export const EmployeeBoxStyle = (isDarkMode) => {
     height: "378px",
     flexShrink: 0,
     borderRadius: "19.004px",
-    background: isDarkMode ? themes.darkmodeBoxColor : themes.lightmodeBoxColor,
+    background: isdarkmode()
+      ? themes.darkmodeBoxColor
+      : themes.lightmodeBoxColor,
     boxShadow: "0px 16px 24px 0px rgba(0, 0, 0, 0.02)",
   };
 };
@@ -144,12 +147,12 @@ export const ProgressBoxDivider = {
   strokeWidth: "2px",
   stroke: "#F9F9F9",
 };
-export const ProfileDividerStyle = (isDarkMode) => {
+export const ProfileDividerStyle = () => {
   return {
-    backgroundColor: isDarkMode ? "white" : "#000000",
+    backgroundColor: isdarkmode() ? "white" : "#000000",
   };
 };
-export const PieChartBoxStyle = (isDarkMode) => {
+export const PieChartBoxStyle = () => {
   return {
     gridColumn: "span 1",
     gridRow: "span 1",
@@ -157,13 +160,15 @@ export const PieChartBoxStyle = (isDarkMode) => {
     height: "374px",
     flexShrink: 0,
     borderRadius: "19.004px",
-    background: isDarkMode ? themes.darkmodeBoxColor : themes.lightmodeBoxColor,
+    background: isdarkmode()
+      ? themes.darkmodeBoxColor
+      : themes.lightmodeBoxColor,
     boxShadow: "0px 16px 24px 0px rgba(0, 0, 0, 0.02)",
   };
 };
-export const PieChartTypographyStyle = (isDarkMode) => {
+export const PieChartTypographyStyle = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "20px",
     fontStyle: "normal",
@@ -175,12 +180,12 @@ export const PieChartTypographyStyle = (isDarkMode) => {
     mt: 2,
   };
 };
-export const PieChartStyle = (isDarkMode) => {
+export const PieChartStyle = () => {
   return {
     "--ChartsLegend-rootOffsetX": "200px",
     "--ChartsLegend-rootOffsetY": "-75px",
     '[class*="MuiChartsLegend-label"]': {
-      fill: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+      fill: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     },
   };
 };
@@ -189,10 +194,10 @@ export const EmojiBoxStyle = {
   width: "18px",
   height: "18px",
 };
-export const LoadTypeTextStyle = (isDarkMode) => {
+export const LoadTypeTextStyle = () => {
   return {
     ml: "10px",
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "14px",
     fontStyle: "normal",
@@ -200,9 +205,9 @@ export const LoadTypeTextStyle = (isDarkMode) => {
     lineHeight: "normal",
   };
 };
-export const PercentageTextStyle = (isDarkMode) => {
+export const PercentageTextStyle = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "14px",
     fontStyle: "normal",
@@ -210,13 +215,15 @@ export const PercentageTextStyle = (isDarkMode) => {
     lineHeight: "normal",
   };
 };
-export const RedAlertBoxStyle = (isDarkMode) => {
+export const RedAlertBoxStyle = () => {
   return {
     width: 208,
     height: 76,
     flexShrink: 0,
     borderRadius: "12px 12px 0 0",
-    background: isDarkMode ? themes.darkmodeBoxColor : themes.lightmodeBoxColor,
+    background: isdarkmode()
+      ? themes.darkmodeBoxColor
+      : themes.lightmodeBoxColor,
     boxShadow: "0px 4px 0px 0px #650BFF inset",
     display: "flex",
     alignItems: "center",
@@ -226,9 +233,9 @@ export const RedAlertBoxStyle = (isDarkMode) => {
     top: "34px",
   };
 };
-export const RedAlertTitleStyle = (isDarkMode) => {
+export const RedAlertTitleStyle = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: 16,
     fontStyle: "normal",
@@ -236,7 +243,7 @@ export const RedAlertTitleStyle = (isDarkMode) => {
     lineHeight: "normal",
   };
 };
-export const RedAlertContentBoxStyle = (isDarkMode) => {
+export const RedAlertContentBoxStyle = () => {
   return {
     width: "90vh",
     height: "282px",
@@ -246,9 +253,9 @@ export const RedAlertContentBoxStyle = (isDarkMode) => {
     gridRow: "span 1",
     width: "597px",
     maxHeight: "282px",
-    marginTop: "16px",
-    background: isDarkMode ? "#302f35" : "white",
+    marginTop: "26px",
     boxShadow: "0px 16px 24px 0px rgba(0, 0, 0, 0.02)",
+    borderRadius: "16px",
   };
 };
 export const RedAlertRowContent = {
@@ -257,9 +264,9 @@ export const RedAlertRowContent = {
   ml: 4,
   alignItems: "center",
 };
-export const RedAlertEmpName = (isDarkMode) => {
+export const RedAlertEmpName = () => {
   return {
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "14px",
     fontStyle: "normal",
@@ -299,7 +306,7 @@ export const RedAlertFrequency = {
   fontWeight: 500,
   lineHeight: "normal",
 };
-export const AvgEmployeeMoodBoxStyle = (isDarkMode) => {
+export const AvgEmployeeMoodBoxStyle = () => {
   return {
     gridColumn: "span 1",
     gridRow: "span 1",
@@ -308,7 +315,9 @@ export const AvgEmployeeMoodBoxStyle = (isDarkMode) => {
     height: "282px",
     flexShrink: 0,
     borderRadius: "19.004px",
-    background: isDarkMode ? themes.darkmodeBoxColor : themes.lightmodeBoxColor,
+    background: isdarkmode()
+      ? themes.darkmodeBoxColor
+      : themes.lightmodeBoxColor,
     boxShadow: "0px 16px 24px 0px rgba(0, 0, 0, 0.02)",
     display: "flex",
   };
@@ -317,10 +326,10 @@ export const MoodContentBoxStyle = {
   marginLeft: "70px",
   marginTop: "104px",
 };
-export const MoodContentTextStyle = (isDarkMode) => {
+export const MoodContentTextStyle = () => {
   return {
     width: "262px",
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: themes.boldFont,
     fontSize: "25.112px",
     fontStyle: "normal",
@@ -328,9 +337,9 @@ export const MoodContentTextStyle = (isDarkMode) => {
     lineHeight: "normal",
   };
 };
-export const ResgistrationFormStyle = (isDarkMode) => {
+export const ResgistrationFormStyle = () => {
   return {
-    background: isDarkMode ? "rgb(48 47 53)" : "#fcfcfc",
+    backgroundColor: isdarkmode() ? "rgb(48 47 53)" : "#fcfcfc",
     padding: "18px",
     paddingTop: "30px",
     borderRadius: "10px",
@@ -367,11 +376,14 @@ export const ResgistrationButtonStyle = {
   backgroundColor: "rgb(18 121 69)",
   width: "15vw",
   height: "7vh",
+  "&:hover": {
+    backgroundColor: "rgb(18 121 69)",
+  },
 };
-export const MoodContentSubTextStyle = (isDarkMode) => {
+export const MoodContentSubTextStyle = () => {
   return {
     width: "262px",
-    color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+    color: isdarkmode() ? themes.darkmodefontColor : themes.lightmodeFontColor,
     fontFamily: "Gilroy-Medium",
     fontSize: "19px",
     fontStyle: "normal",
@@ -402,56 +414,56 @@ export const MoodEmojiDescStyle = {
   fontWeight: 400,
   lineHeight: "normal",
 };
-export const DeleteModalCancelButtonStyle = (isDarkMode, colors, theme) => {
+export const DeleteModalCancelButtonStyle = (colors, theme) => {
   return {
     height: "35px",
-    backgroundColor: isDarkMode ? "rgb(85 88 131)" : colors.blueAccent[700],
+    backgroundColor: isdarkmode() ? "rgb(85 88 131)" : colors.blueAccent[700],
     color: theme.palette.common.white,
     width: "45%",
   };
 };
-export const DeleteModalContentStyle = (isDarkMode) => {
+export const DeleteModalContentStyle = () => {
   return {
     fontFamily: "unset",
-    color: isDarkMode ? "white" : "#e94343",
+    color: isdarkmode() ? "white" : "#e94343",
   };
 };
-export const DeleteModalConfirmButtonStyle = (isDarkMode, theme) => {
+export const DeleteModalConfirmButtonStyle = (theme) => {
   return {
     height: "35px",
-    backgroundColor: isDarkMode ? "rgb(145 34 34)" : theme.palette.error.main,
+    backgroundColor: isdarkmode() ? "rgb(145 34 34)" : theme.palette.error.main,
     color: theme.palette.common.white,
     width: "45%",
   };
 };
-export const previewModalStyle = (isDarkMode) => {
+export const previewModalStyle = () => {
   return {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: isDarkMode ? themes.darkmodeBoxColor : "#fbfbfb",
+    bgcolor: isdarkmode() ? themes.darkmodeBoxColor : "#fbfbfb",
     border: "2px solid #000",
     boxShadow: 24,
     fontsize: 40,
     p: 2,
   };
 };
-export const ListItemStyle = (isDarkMode) => {
+export const ListItemStyle = () => {
   return {
-    background: isDarkMode ? "#838282" : "#f1f0f0",
+    background: isdarkmode() ? "#838282" : "#f1f0f0",
     marginBottom: "10px",
     marginLeft: "16px",
     borderRadius: "42px",
   };
 };
-export const ProfileBoxStyle = (isDarkMode) => {
+export const ProfileBoxStyle = (isNonMobile) => {
   return {
     ml: 3,
     paddingLeft: "20px",
     height: "60vh",
-    background: isDarkMode ? "#494949" : "#f9f9f9",
+    background: isdarkmode() ? "#494949" : "#f9f9f9",
     paddingTop: "40px",
     paddingBottom: "30px",
     marginTop: "100px",
@@ -459,9 +471,10 @@ export const ProfileBoxStyle = (isDarkMode) => {
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "10px",
+    "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
   };
 };
-export const dataGridStyles = (isDarkMode, colors) => {
+export const dataGridStyles = (colors) => {
   return {
     "& .MuiDataGrid-root": {
       border: "none",
@@ -473,18 +486,18 @@ export const dataGridStyles = (isDarkMode, colors) => {
       color: colors.greenAccent[300],
     },
     "& .MuiDataGrid-columnHeaders": {
-      backgroundColor: isDarkMode ? "#595a68" : colors.blueAccent[700],
+      backgroundColor: isdarkmode() ? "#595a68" : colors.blueAccent[700],
       borderBottom: "none",
     },
     "& .MuiDataGrid-columnHeaderTitle": {
-      color: isDarkMode ? "#e3e3e3" : "black",
+      color: isdarkmode() ? "#e3e3e3" : "black",
     },
     "& .MuiDataGrid-virtualScroller": {
-      backgroundColor: isDarkMode ? "#cbc3c3" : colors.primary[400],
+      backgroundColor: isdarkmode() ? "#cbc3c3" : colors.primary[400],
     },
     "& .MuiDataGrid-footerContainer": {
       borderTop: "none",
-      backgroundColor: isDarkMode ? "#595a68" : colors.blueAccent[700],
+      backgroundColor: isdarkmode() ? "#595a68" : colors.blueAccent[700],
     },
     "& .MuiCheckbox-root": {
       color: `${colors.greenAccent[200]} !important`,
@@ -502,28 +515,36 @@ export const dataGridStyles = (isDarkMode, colors) => {
   };
 };
 
-export const FormTextBoxStyle = (isDarkMode) => {
+export const FormTextBoxStyle = () => {
   return {
     '& [class*="MuiFormControl-root"][class*="MuiTextField-root"]': {
-      backgroundColor: isDarkMode ? "#252424" : "#ffffff",
+      backgroundColor: isdarkmode() ? "#252424" : "#ffffff",
     },
     '& [class*="MuiOutlinedInput-notchedOutline"]': {
-      borderColor: isDarkMode ? "rgba(223, 223, 223, 0.7)" : "#c4c4c4",
+      borderColor: isdarkmode() ? "rgba(223, 223, 223, 0.7)" : "#c4c4c4",
     },
     '& [class*="MuiFormLabel-root"][class*="MuiInputLabel-root"]': {
-      color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+      color: isdarkmode()
+        ? themes.darkmodefontColor
+        : themes.lightmodeFontColor,
     },
     '& [class*="MuiInputBase-input"][class*="MuiOutlinedInput-input"]': {
-      color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+      color: isdarkmode()
+        ? themes.darkmodefontColor
+        : themes.lightmodeFontColor,
     },
     '& [class*="MuiFormControl-root"][class*="MuiTextField-root"]': {
       backgroundColor: "#252424",
     },
     '& [class*="MuiInputBase-input"][class*="MuiOutlinedInput-input"]': {
-      color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+      color: isdarkmode()
+        ? themes.darkmodefontColor
+        : themes.lightmodeFontColor,
     },
     '& [class*="MuiFormLabel-root"][class*="MuiInputLabel-root"]': {
-      color: isDarkMode ? themes.darkmodefontColor : themes.lightmodeFontColor,
+      color: isdarkmode()
+        ? themes.darkmodefontColor
+        : themes.lightmodeFontColor,
     },
   };
 };

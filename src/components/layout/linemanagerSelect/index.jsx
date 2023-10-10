@@ -4,6 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
+import isdarkmode from "../../../helpers/darkmodeHelper";
 
 function IsLineManagerSelect({
   isLineManager,
@@ -11,14 +12,10 @@ function IsLineManagerSelect({
   DarkModeFontColour,
   t,
   MenuProps,
-  isDarkMode,
 }) {
   return (
     <FormControl sx={{ gridColumn: "span 2" }}>
-      <InputLabel
-        id="line-manager-label"
-        style={DarkModeFontColour(isDarkMode)}
-      >
+      <InputLabel id="line-manager-label" sx={DarkModeFontColour()}>
         {t("linemanager.isLineManager")}
       </InputLabel>
       <Select
@@ -28,22 +25,25 @@ function IsLineManagerSelect({
         onChange={handleLineManagerChange}
         input={<OutlinedInput label={t("linemanager.isLineManager")} />}
         MenuProps={MenuProps}
-        style={DarkModeFontColour(isDarkMode)}
+        sx={DarkModeFontColour()}
       >
         <MenuItem
           value="yes"
-          style={{
-            backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
-            ...DarkModeFontColour(isDarkMode),
+          sx={{
+            backgroundColor: isdarkmode() ? "rgb(48 47 53)" : "white",
+            "&:hover": {
+              backgroundColor: "green",
+            },
+            ...DarkModeFontColour(),
           }}
         >
           Yes
         </MenuItem>
         <MenuItem
           value="no"
-          style={{
-            backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
-            ...DarkModeFontColour(isDarkMode),
+          sx={{
+            backgroundColor: isdarkmode() ? "rgb(48 47 53)" : "white",
+            ...DarkModeFontColour(),
           }}
         >
           No

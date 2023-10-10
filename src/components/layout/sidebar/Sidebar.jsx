@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import SubjectIcon from "@mui/icons-material/Subject";
 import Tooltip from "@mui/material/Tooltip";
@@ -6,15 +7,17 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import { logout } from "../../../services/firebase";
-import { useDarkMode } from "../../../context/DarkModeContext";
 import "./sidebar.css";
-import Routes from "../../../config/routes";
+import { clearUser } from "../../../redux/reducers/AuthReducer";
+import AppRoutes from "../../../config/routes";
+import isdarkmode from "../../../helpers/darkmodeHelper";
+import { removeItem } from "../../../services/storage-service";
 
 function Sidebar({ children }) {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const { isDarkMode } = useDarkMode();
 
   const showAnimation = {
     hidden: {
@@ -35,6 +38,8 @@ function Sidebar({ children }) {
   function handleClick(e) {
     if (e === "Logout") {
       logout();
+      dispatch(clearUser());
+      removeItem("AccessToken");
     }
   }
   return (
@@ -48,7 +53,7 @@ function Sidebar({ children }) {
             damping: 10,
           },
         }}
-        className={`sidebar ${isDarkMode ? "dark-mode" : ""}`}
+        className={`sidebar ${isdarkmode() ? "dark-mode" : ""}`}
       >
         <div className="top_section">
           <AnimatePresence>
@@ -69,7 +74,7 @@ function Sidebar({ children }) {
           <div className="bars">
             <SubjectIcon onClick={toggle} />
           </div>
-          {Routes.map((route, index) => {
+          {AppRoutes.map((route, index) => {
             if (route.subRoutes) {
               return (
                 <SidebarMenu
@@ -86,8 +91,8 @@ function Sidebar({ children }) {
                 to={route.path}
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                className={`link ${isDarkMode ? "dark-mode" : ""}`}
-                activeclassname={`active ${isDarkMode ? "dark-mode" : ""}`}
+                className={`link ${isdarkmode() ? "dark-mode" : ""}`}
+                activeclassname={`active ${isdarkmode() ? "dark-mode" : ""}`}
                 onClick={() => handleClick(route.name)}
               >
                 <div className="icon">

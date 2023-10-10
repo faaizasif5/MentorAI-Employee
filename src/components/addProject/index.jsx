@@ -16,7 +16,6 @@ import calculateDuration from "../../helpers/calculateDuration";
 import { handleProjectFormSubmit } from "../common/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
 import DatePicker from "../layout/datePicker";
-import { useDarkMode } from "../../context/DarkModeContext";
 import {
   formatStartDateText,
   formatLastDateText,
@@ -37,7 +36,6 @@ function AddProject() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { isDarkMode } = useDarkMode();
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const [submit, setSubmit] = useState(false);
   const [designationName, setDesignationName] = useState([]);
@@ -87,10 +85,7 @@ function AddProject() {
           handleChange,
           handleSubmit,
         }) => (
-          <form
-            onSubmit={handleSubmit}
-            style={ResgistrationFormStyle(isDarkMode)}
-          >
+          <form onSubmit={handleSubmit} style={ResgistrationFormStyle()}>
             <Box sx={ProjectResgistrationFormBoxStyle(isNonMobile)}>
               <FormFields
                 handleBlur={handleBlur}
@@ -98,7 +93,6 @@ function AddProject() {
                 values={values}
                 touched={touched}
                 errors={errors}
-                isDarkMode={isDarkMode}
                 formFields={projectformFields}
               />
               <DatePicker
@@ -108,7 +102,6 @@ function AddProject() {
                 inputFormat={formatStartDateText}
                 handleBlur={handleBlur}
                 minDate={today}
-                isDarkMode={isDarkMode}
               />
               <DatePicker
                 selectedDate={selectedLastDate}
@@ -117,7 +110,6 @@ function AddProject() {
                 inputFormat={formatLastDateText}
                 handleBlur={handleBlur}
                 minDate={today}
-                isDarkMode={isDarkMode}
               />
               <ResourcePicker
                 designationName={designationName}
@@ -126,7 +118,6 @@ function AddProject() {
                 DarkModeFontColour={DarkModeFontColour}
                 t={t}
                 theme={theme}
-                isDarkMode={isDarkMode}
                 MenuProps={MenuProps}
                 dropdownStyles={dropdownStyles}
               />

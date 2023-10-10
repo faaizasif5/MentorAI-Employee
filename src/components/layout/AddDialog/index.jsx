@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { tokens } from "../../../theme";
-import { useDarkMode } from "../../../context/DarkModeContext";
 import { DarkModeFontColour } from "../../../styles/muiStyles";
+import isdarkmode from "../../../helpers/darkmodeHelper";
 
 function AddDialog({
   addOpen,
@@ -28,23 +28,22 @@ function AddDialog({
   const theme = useTheme();
   const { t } = useTranslation();
   const colors = tokens(theme.palette.mode);
-  const { isDarkMode } = useDarkMode();
   return (
     <Dialog
       open={addOpen}
       onClose={handleAddClose}
       sx={{
         '[class*="MuiPaper-root"][class*="MuiDialog-paper"]': {
-          backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
+          backgroundColor: isdarkmode() ? "rgb(48 47 53)" : "white",
         },
       }}
     >
       <DialogTitle
-        style={{
+        sx={{
           fontSize: "20px",
           fontWeight: "bold",
           fontFamily: "Gilroy-Bold",
-          ...DarkModeFontColour(isDarkMode),
+          ...DarkModeFontColour(),
         }}
       >
         {t("employee.assignEmployee")}
@@ -52,10 +51,7 @@ function AddDialog({
       <DialogContent>
         <Stack spacing={1} direction="row" sx={{ marginTop: 1 }}>
           <FormControl sx={{ width: 550 }}>
-            <InputLabel
-              id="demo-multiple-name-label"
-              style={DarkModeFontColour(isDarkMode)}
-            >
+            <InputLabel id="demo-multiple-name-label" sx={DarkModeFontColour()}>
               {t("employee.pickEmployee")}
             </InputLabel>
             <Select
@@ -64,15 +60,18 @@ function AddDialog({
               value={selectedEmployeeId}
               onChange={handleChange}
               input={<OutlinedInput label={t("linemanager.assign")} />}
-              style={DarkModeFontColour(isDarkMode)}
+              sx={DarkModeFontColour()}
             >
               {employeesWithoutLineManagers.map((employee) => (
                 <MenuItem
                   key={employee.employee_id}
                   value={employee.employee_id}
-                  style={{
-                    backgroundColor: isDarkMode ? "rgb(48 47 53)" : "white",
-                    ...DarkModeFontColour(isDarkMode),
+                  sx={{
+                    backgroundColor: isdarkmode() ? "rgb(48 47 53)" : "white",
+                    "&:hover": {
+                      backgroundColor: "green",
+                    },
+                    ...DarkModeFontColour(),
                   }}
                 >
                   {employee.first_name} {employee.last_name} (
@@ -106,14 +105,14 @@ function AddDialog({
           autoFocus
           onClick={handleAddClose}
           sx={{
-            backgroundColor: isDarkMode
+            backgroundColor: isdarkmode()
               ? "rgb(85 88 131)"
               : colors.blueAccent[700],
             color: theme.palette.common.white,
             width: "50%",
             mx: "auto",
             "&:hover": {
-              backgroundColor: isDarkMode
+              backgroundColor: isdarkmode()
                 ? "rgb(85 88 131)"
                 : colors.blueAccent[700],
               color: theme.palette.common.white,
