@@ -22,6 +22,7 @@ const en = {
     googleSignup: `Sign in with Google 🚀`,
   },
   dashboard: {
+    hey: `Hey`,
     dashboard: `Dashboard`,
     EmployeeLoad: `Employee Load`,
     stress: `Overall Employee Stress`,
