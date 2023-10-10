@@ -1,11 +1,10 @@
-import { AccessToken } from "Service/api-client";
-import { useSelector } from "react-redux";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../services/firebase";
 
-export const isLoggedIn = () => {
-  const userDetails = useSelector((state) => state.AuthReducer.user);
-  if (userDetails) {
-    AccessToken.token = 123456;
+export default function isLoggedIn() {
+  const [user] = useAuthState(auth);
+  if (user) {
     return true;
   }
   return false;
-};
+}

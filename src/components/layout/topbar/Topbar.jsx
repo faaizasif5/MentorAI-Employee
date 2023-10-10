@@ -7,8 +7,6 @@ function Topbar() {
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
-      {/* SEARCH BAR */}
-
       <Box
         display="flex"
         backgroundColor={colors.primary[400]}
@@ -21,26 +19,6 @@ function Topbar() {
         </IconButton>
       */}
       </Box>
-
-      {/* ICONS *
-      <Box display="flex">
-        <IconButton onClick={colorMode.toggleColorMode}>
-          {theme.palette.mode === "dark" ? (
-            <DarkModeOutlinedIcon />
-          ) : (
-            <LightModeOutlinedIcon />
-          )}
-          </IconButton>
-        <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <SettingsOutlinedIcon />
-          </IconButton>
-        <IconButton>
-          <LogoutIcon />
-          </IconButton>
-      </Box> */}
     </Box>
   );
 }

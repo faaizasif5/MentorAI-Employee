@@ -33,7 +33,7 @@ export default async function validate(values, capt, dispatch) {
       errors.firebase = "Email/Password Incorrect";
     }
   } catch (error) {
-    // Handle any unexpected errors here
+    alert(error);
   }
   if (Object.keys(errors).length > 0) {
     dispatch(setErrors(errors));

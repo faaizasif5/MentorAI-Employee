@@ -13,7 +13,7 @@ import {
   setPasswordState,
 } from "../../redux/reducers/authSlice";
 import validate from "../../helpers/formValidator";
-import FormFields from "../../constants/forms";
+import LoginFormFields from "../../constants/Loginforms";
 import signin from "../../services/auth";
 import { addItem } from "../../services/storage-service";
 
@@ -68,7 +68,7 @@ function Login() {
             <h1>{t("loginHeading")}</h1>
             <div className="ui divider" />
             <div className="ui form">
-              {FormFields.map((field) => (
+              {LoginFormFields.map((field) => (
                 <div className="field" key={field.name}>
                   <label htmlFor={`${field.name}Input`}>{field.label}</label>
                   <input

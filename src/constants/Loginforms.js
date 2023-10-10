@@ -1,4 +1,4 @@
-const FormFields = [
+const LoginFormFields = [
   {
     name: "email",
     type: "email",
@@ -12,4 +12,4 @@ const FormFields = [
     label: "Password",
   },
 ];
-export default FormFields;
+export default LoginFormFields;
