@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
-import { addLineManager } from "../../../redux/reducers/lineManagerSlice";
-import { addEmployee } from "../../../redux/reducers/employeeSlice";
-import { addProject } from "../../../redux/reducers/projectSlice";
-import { registerWithEmailAndPassword } from "../../../services/firebase";
+import { addLineManager } from "../../../../redux/reducers/lineManagerSlice";
+import { addEmployee } from "../../../../redux/reducers/employeeSlice";
+import { addProject } from "../../../../redux/reducers/projectSlice";
+import { registerWithEmailAndPassword } from "../../../../services/firebase";
 
 const FormSubmitHandler = async (
   values,

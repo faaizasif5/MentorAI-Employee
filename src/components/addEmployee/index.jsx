@@ -4,19 +4,19 @@ import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useDispatch } from "react-redux";
-import PhotoInput from "../layout/PhotoInputFeild";
-import FormFields from "../layout/FormTextFeild";
+import PhotoInput from "../common/PhotoInputFeild";
+import FormFields from "../common/FormTextFeild";
 import SuccessAlert from "../layout/successAlert";
 import { checkoutSchema } from "../../helpers/auth-validator";
 import Header from "../layout/header/index";
-import DesignationDropdown from "../layout/designationDropdown/index";
-import IsLineManagerSelect from "../layout/linemanagerSelect";
+import DesignationDropdown from "../common/designationDropdown/index";
+import IsLineManagerSelect from "../common/linemanagerSelect";
 import empinitialValues from "../../constants/initialvalues";
 import { designations } from "../../constants/dummydata";
-import { MenuProps } from "../layout/dropdownLayout/dropdownLayout";
-import FormSubmitHandler from "../common/formSubmitHandler/formSubmitHandler";
+import { MenuProps } from "../common/dropdownLayout/dropdownLayout";
+import FormSubmitHandler from "../common/handler/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
-import dropdownStyles from "../layout/dropdownStyle/style";
+import dropdownStyles from "../common/dropdownStyle/style";
 import employeeformFields from "../../constants/registrationFormFeild";
 import {
   DarkModeFontColour,

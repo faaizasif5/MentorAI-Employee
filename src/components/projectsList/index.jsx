@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import AddAccountButton from "../common/addButton/addAccountButton";
 import Header from "../layout/header/index";
 import ProjectTableColumns from "../../constants/ProjectTableColumns";
-import DeleteDialog from "../layout/deleteDialogueBox.jsx";
-import dataGridStyles from "../layout/datagridStyle/datagridStyle";
+import DeleteDialog from "../common/deleteDialogueBox.jsx";
+import dataGridStyles from "../common/datagridStyle/datagridStyle";
 import dummyData, { project } from "../../constants/dummydata";
 import { deleteProject } from "../../redux/reducers/projectSlice";
-import ProjectModal from "../layout/ProjectPreviewModal";
+import ProjectModal from "../common/ProjectPreviewModal";
 
 function ProjectList() {
   const dispatch = useDispatch();

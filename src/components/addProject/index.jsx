@@ -5,24 +5,24 @@ import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useDispatch } from "react-redux";
-import FormFields from "../layout/FormTextFeild";
+import FormFields from "../common/FormTextFeild";
 import { projectformFields } from "../../constants/registrationFormFeild";
 import Header from "../layout/header/index";
 import dummyData from "../../constants/dummydata";
 import { projectInitialValues } from "../../constants/initialvalues";
 import { ProjectSchema } from "../../helpers/auth-validator";
-import { MenuProps } from "../layout/dropdownLayout/dropdownLayout";
+import { MenuProps } from "../common/dropdownLayout/dropdownLayout";
 import calculateDuration from "../../helpers/calculateDuration";
-import { handleProjectFormSubmit } from "../common/formSubmitHandler/formSubmitHandler";
+import { handleProjectFormSubmit } from "../common/handler/formSubmitHandler/formSubmitHandler";
 import generateUniqueId from "../../helpers/generateUniqueID";
-import DatePicker from "../layout/datePicker";
+import DatePicker from "../common/datePicker";
 import {
   formatStartDateText,
   formatLastDateText,
 } from "../../helpers/formatDate";
 import SuccessAlert from "../layout/successAlert";
-import ResourcePicker from "../layout/resourcePicker";
-import dropdownStyles from "../layout/dropdownStyle/style";
+import ResourcePicker from "../common/resourcePicker";
+import dropdownStyles from "../common/dropdownStyle/style";
 import {
   ResgistrationFormStyle,
   ProjectResgistrationFormBoxStyle,

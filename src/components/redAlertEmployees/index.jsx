@@ -12,7 +12,7 @@ import {
   RedAlertRowContent,
   RedAlertEmpName,
   RedAlertDate,
-  RedAlertDivider,
+  RowDivider,
   RedAlertFrequency,
 } from "../../styles/muiStyles";
 import isdarkmode from "../../helpers/darkmodeHelper";
@@ -46,7 +46,7 @@ function RedAlertEmployees() {
               </Typography>
               <Typography sx={RedAlertDate}>{employee.date}</Typography>
             </Box>
-            <Divider sx={RedAlertDivider} />
+            <Divider sx={RowDivider} />
           </div>
         ))}
       </Box>

@@ -15,9 +15,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import WorkIcon from "@mui/icons-material/Work";
 import { auth } from "../../services/firebase";
 import Header from "../layout/header";
-import ProfileInfo from "../layout/profileDetails";
+import ProfileInfo from "../common/profileDetails";
 import { ProfileBoxStyle } from "../../styles/muiStyles";
-import ProfileDateField from "../layout/dateField/index";
+import ProfileDateField from "../common/dateField/index";
 import ProfileDivider from "../layout/ProfileDivider/index";
 
 function Profile() {

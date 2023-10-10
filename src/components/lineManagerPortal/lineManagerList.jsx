@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import Header from "../layout/header/index";
-import DeleteDialog from "../layout/deleteDialogueBox.jsx";
-import PreviewModal from "../layout/previewModal/index";
+import DeleteDialog from "../common/deleteDialogueBox.jsx";
+import PreviewModal from "../common/previewModal/index";
 import { dataGridStyles } from "../../styles/muiStyles";
-import AddDialog from "../layout/AddDialog";
+import AddDialog from "../common/AddDialog";
 import { setLineManagerToEmployee } from "../../redux/reducers/employeeSlice";
 import LinemanagerTableColumns from "../../constants/LineManagertableColumns";
-import deleteAccount from "../common/deleteHandler/deleteHandler";
-import handleAssignClick from "../common/assignHandler/assignHandler";
+import deleteAccount from "../common/handler/deleteHandler/deleteHandler";
+import handleAssignClick from "../common/handler/assignHandler/assignHandler";
 import { tokens } from "../../theme";
 import {
   setLineManagerData,

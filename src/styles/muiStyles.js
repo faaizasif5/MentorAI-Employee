@@ -287,8 +287,8 @@ export const RedAlertDate = {
   marginLeft: "auto",
   marginRight: "40px",
 };
-export const RedAlertDivider = {
-  mt: 1,
+export const RowDivider = {
+  mt: 1.5,
   ml: 4,
   width: "38vw",
   height: "0px",
@@ -312,7 +312,7 @@ export const AvgEmployeeMoodBoxStyle = () => {
     gridRow: "span 1",
     marginTop: "92px",
     width: "90vh",
-    height: "282px",
+    height: "295px",
     flexShrink: 0,
     borderRadius: "19.004px",
     background: isdarkmode()
@@ -324,7 +324,7 @@ export const AvgEmployeeMoodBoxStyle = () => {
 };
 export const MoodContentBoxStyle = {
   marginLeft: "70px",
-  marginTop: "104px",
+  marginTop: "124px",
 };
 export const MoodContentTextStyle = () => {
   return {
@@ -398,7 +398,7 @@ export const MoodEmojiBoxStyle = {
   borderRadius: "7px",
   border: "1px solid #0C8CCB",
   background: "rgba(12, 140, 203, 0.06)",
-  marginTop: "87px",
+  marginTop: "105px",
   marginLeft: "27px",
 };
 export const MoodEmojiImgStyle = {

@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 import AddAccountButton from "../common/addButton/addAccountButton";
 import Header from "../layout/header/index";
 import { tokens } from "../../theme";
-import DeleteDialog from "../layout/deleteDialogueBox.jsx";
-import PreviewModal from "../layout/previewModal/index";
+import DeleteDialog from "../common/deleteDialogueBox.jsx";
+import PreviewModal from "../common/previewModal/index";
 import { dataGridStyles } from "../../styles/muiStyles";
 import { setTableReduxData } from "../../redux/reducers/employeeSlice";
 import EmployeeTableColumns from "../../constants/EmployeeTableColumn";
-import deleteAccount from "../common/deleteHandler/deleteHandler";
+import deleteAccount from "../common/handler/deleteHandler/deleteHandler";
 
 function EmployeeList() {
   const theme = useTheme();

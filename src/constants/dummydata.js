@@ -1,5 +1,10 @@
 import Avatar1 from "../assets/Avatar/Ellipse 50.png";
 import Avatar2 from "../assets/Avatar/Ellipse 51.png";
+// import isdarkmode from "../helpers/darkmodeHelper";
+import HappyGreen from "../assets/Emojis/happyGreen.png";
+import HappyYellow from "../assets/Emojis/happyYellow.png";
+import HappyBlue from "../assets/Emojis/happyBlue.png";
+import HappyRed from "../assets/Emojis/happyRed.png";
 
 const dummyData = [
   {
@@ -169,6 +174,40 @@ export const project = [
     status: "In Progress",
     no_of_resources: 4,
     resource_list: [1, 4, 3, 5],
+  },
+];
+export const employeeData = [
+  {
+    emoji: HappyGreen,
+    value: 73,
+    color: "#54D14D",
+    text: "Normal",
+    background: "rgba(84, 209, 77, 0.10)",
+    border: "1px solid #54D14D",
+  },
+  {
+    emoji: HappyBlue,
+    value: 34,
+    color: "#35C2FD",
+    text: "Normal",
+    background: "rgba(75, 126, 239, 0.10)",
+    border: "1px solid #4B7EEF",
+  },
+  {
+    emoji: HappyYellow,
+    value: 51,
+    color: "#EF7E5D",
+    text: "Medium",
+    background: "rgba(245, 195, 0, 0.10)",
+    border: "1px solid #F5C300",
+  },
+  {
+    emoji: HappyRed,
+    value: 51,
+    color: "#dd0000",
+    text: "High",
+    background: "rgb(255 141 141 / 20%)",
+    border: "1px solid #FC4545",
   },
 ];
 export const PieChartdata = [
