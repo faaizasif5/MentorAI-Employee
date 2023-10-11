@@ -44,7 +44,7 @@ function Profile() {
           <Stack direction="column" justifyContent="space-evenly" spacing={3}>
             <ProfileInfo
               label={t("employee.id")}
-              value="23"
+              value={t("profile.id")}
               AvatarIcon={NumbersIcon}
             />
             <ProfileInfo
@@ -59,25 +59,25 @@ function Profile() {
             />
             <ProfileInfo
               label={t("employee.Contact")}
-              value="03312470377"
+              value={t("profile.contact")}
               AvatarIcon={DialpadIcon}
             />
           </Stack>
           <ProfileDivider />
           <Stack direction="column" justifyContent="space-evenly" spacing={3}>
             <ProfileInfo
-              label={t("employee.Designation")}
+              label={t("profile.Designation")}
               value="Admin"
               AvatarIcon={WorkIcon}
             />
             <ProfileInfo
               label={t("employee.cnic")}
-              value="42201-6634859-3"
+              value={t("profile.cnic")}
               AvatarIcon={DescriptionIcon}
             />
             <ProfileInfo
               label={t("employee.address")}
-              value="Folio3 Tower, Plot 26 Shahrah-e-Faisal Rd,Karachi"
+              value={t("profile.address")}
               AvatarIcon={HomeIcon}
             />
             <ProfileDateField

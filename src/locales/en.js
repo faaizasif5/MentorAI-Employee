@@ -80,6 +80,11 @@ const en = {
   profile: {
     title: `Profile Details`,
     subtitle: `View Your Profile Details`,
+    id: `23`,
+    contact: `03312470377`,
+    Designation: `Admin`,
+    cnic: `42201-6634859-3`,
+    address: `Folio3 Tower, Plot 26 Shahrah-e-Faisal Rd,Karachi`,
   },
   project: {
     id: `Project ID`,
